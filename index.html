@@ -196,6 +196,21 @@ function bbb(){
 	});
 }
 
+function GuardarMensaje1() {
+
+    $.ajax({
+	url: "https://gfc8f6952f1e582-car.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/car/car",
+	type: 'GET',
+	crossDomain: true,
+	dataType: 'jsonp',
+	success: function (response) {
+	    alert("Success");
+	},
+	error: function (response) {
+	    alert('Failed!');
+	},
+    });
+}
 
 </script>
 
