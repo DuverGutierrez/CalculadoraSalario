@@ -255,3 +255,7 @@ $("#btnRegresar").click(() => {
     $("#contenedorSalario").hide(500);
 });
 
+function SubirPagina() {
+    $('html, body').animate({ scrollTop: -100 /*medida de pixeles a desplazar desde el tope superior*/ })
+}
+
