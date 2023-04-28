@@ -132,6 +132,7 @@ $("#btnCalcular").click(() => {
     );
     $("#contenedorDatos").hide(500);
     $("#contenedorSalario").show(500);
+    SubirPagina();
 });
 
 function GuardarMensaje() {
@@ -253,6 +254,8 @@ $("#selecGrado").change(() => {
 $("#btnRegresar").click(() => {
     $("#contenedorDatos").show(500);
     $("#contenedorSalario").hide(500);
+    SubirPagina();
+
 });
 
 function SubirPagina() {
