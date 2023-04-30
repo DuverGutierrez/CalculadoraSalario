@@ -312,6 +312,7 @@ function CalcularTotal() {
 
     $("#tablaTotal tbody").empty();
     $("#tablaTotalComp tbody").empty();
+    $("#tablaTotalRetro tbody").empty();
 
     devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + otrosDevengos;
     descuentos = sanidad + casur + cajaHonor + auxMutuo + bonifSeguro + otrosDescuentos;
@@ -358,8 +359,10 @@ function CalcularTotal() {
         <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="totalNeto">${ConvertirEnString(totalRetro)}</td></tr>`
     );
 
+    $("#afilCasur").remove();
+
     $("#tablaDescuentosRetro tbody").append(
-        `<tr><td>Afiliación o aumento CASUR</td><td style="text-align: right" id="cajaHonor">${ConvertirEnString(afilCasur)}</td></tr>`
+        `<tr id="afilCasur"><td>Afiliación o aumento CASUR</td><td style="text-align: right">${ConvertirEnString(afilCasur)}</td></tr>`
     );
 
     $("#contenedorDatos").hide(500);
@@ -408,7 +411,7 @@ $("#btnAgregarDescuento").click(() => {
 $("#btnAgregarDevengo").click(() => {
     let nombreDevengo = $("#nombreDevengo").val();
     let valorDevengo = ConvertirEnFloat($("#valorDevengo").val());
-    let valorDevengoRetro = valorDevengo * mes;
+    let valorDevengoRetro = (SumAumento(valorDevengo) - valorDevengo) * mes;
 
     otrosDevengos += valorDevengo;
     otrosDevengosRetro += valorDevengoRetro;
@@ -420,9 +423,9 @@ $("#btnAgregarDevengo").click(() => {
     $("#tablaDevengosComp tbody").append(
         `<tr>
             <td>${nombreDevengo}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(valorDevengo))}</td>
             <td style="text-align: right" id="">${ConvertirEnString(valorDevengo)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(valorDevengo - ElimAumento(valorDevengo))}</td>
+            <td style="text-align: right" id="">${ConvertirEnString(SumAumento(valorDevengo))}</td>
+            <td style="text-align: right" id="">${ConvertirEnString(SumAumento(valorDevengo) - valorDevengo)}</td>
         </tr>`
     );
 
