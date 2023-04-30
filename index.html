@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calcular Salario 2023</title>
 
     <!-- Google Font: Source Sans Pro    -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="resources/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -37,12 +39,27 @@
             padding: 5px 9px 5px 9px !important;
             background: #2367ff52 !important;
         }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #004d9f;
+            border-color: #004d9f;
+            box-shadow: none;
+        }
+
+        .btn-greenDark {
+            color: #fff;
+            background-color: #004e01;
+            border-color: #004e01;
+            box-shadow: none;
+        }
     </style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="resources/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="LogoPesos.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -55,16 +72,24 @@
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="#" class="brand-link">
-                <img src="resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="LogoPesos.png" alt="imagen de rawpixel.com - Freepic.es
+                " class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Salario 2023</span>
             </a>
             <div class="sidebar">
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <li class="nav-item">
                             <a href="index.html" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
                                 <p class="text">Inicio</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index3.html" class="nav-link">
+                                <i class="nav-icon far fa-circle text-success"></i>
+                                <p>Aclaración</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -86,12 +111,12 @@
                         <div class="col-md-6">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h3 class="card-title">Calcular salario - Seleccione datos</h3>
+                                    <h2 class="card-title">Calcular salario - Seleccione datos</h2>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="">Porcentaje aumento (Modificable)</label>
-                                        <input class="form-control" id="aumento" value="13.67">
+                                        <label for="">Porcentaje aumento (Puede modificarlo)</label>
+                                        <input class="form-control" id="aumento" value="14.67">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Grado</label>
@@ -199,17 +224,19 @@
                     </div>
 
                     <div class="row" id="contenedorSalario" style="display:none">
-                        <div class="col-md-6">
+                        <div class="col-md-8 col-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h3 class="card-title">Posible salario</h3>
+                                    <h2 class="card-title">Posible salario con el aumento 2023</h2>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <table class="table table-striped" style="border: 1px solid #b3b2b2" id="tablaDevengos">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengos">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="2" style="text-align: center; background: #23ff4861">Devengado</th>
+                                                    <th colspan="2" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
                                                 </tr>
                                                 <tr>
                                                     <th style="width: 60%; text-align: left">Concepto</th>
@@ -222,7 +249,8 @@
                                         </table>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-striped" style="border: 1px solid #b3b2b2" id="tablaDescuentos">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDescuentos">
                                             <thead>
                                                 <tr>
                                                     <th colspan="2" style="text-align:center">Descuentos</th>
@@ -237,7 +265,8 @@
                                         </table>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-striped" style="border: 1px solid #b3b2b2" id="tablaTotal">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaTotal">
                                             <thead>
                                                 <tr>
                                                     <th colspan="2" style="text-align:center">Total</th>
@@ -251,41 +280,92 @@
                                             </tbody>
                                         </table>
                                     </div>
+
                                     <div class="card-body">
-                                        <table class="table table-striped" style="border: 1px solid #b3b2b2" id="">
+                                        <div class="row">
+                                            <div class="col-md-2 col-12" style="padding: 5px;">
+                                                <button class="btn btn-success" style="width: 100%;"
+                                                    id="btnRegresarDatos">Regresar</button>
+                                            </div>
+                                            <div class="col-md-5 col-12" style="padding: 5px;">
+                                                <button class="btn btn-primary" style="width: 100%;"
+                                                    id="btnModalDevengos">Agregar devengos</button>
+                                            </div>
+                                            <div class="col-md-5 col-12" style="padding: 5px;">
+                                                <button class="btn btn-danger" style="width: 100%;"
+                                                    id="btnModalDescuentos">Agregar descuentos</button>
+                                                <br>
+                                            </div>
+                                            <div class="col-md-12 col-12" style="padding: 5px;">
+                                                <button class="btn btn-greenDark" style="width: 100%;"
+                                                    id="btnComparar">Comparar con salario
+                                                    anterior</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="contenedorSalarioComp" style="display:none">
+                        <div class="col-md-8 col-12 col-sm-12">
+                            <div class="card card-primary">
+                                <div class="card-header" style="background: #002f62">
+                                    <h3 class="card-title">Comparación de salarios 2022 - 2023</h3>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p style="color: red;font-weight: 700; text-align: justify; display: none;" id="alertaPantalla">! Si está en un dispositivo móvil, gire la pantalla para visualizar los datos correctamente¡ </p>
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengosComp">
                                             <thead>
                                                 <tr>
-                                                    <th style="text-align:center">Aclaración conceptos</th>
+                                                    <th colspan="4" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: justify"><b>Valores aproximados: </b> La información aquí mostrada puede variar con los datos reales del salario </td>
+                                                    <th style="width: 40%; text-align: left">Concepto</th>
+                                                    <th style="width: 20%; text-align: center">2022</th>
+                                                    <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">Diferencia</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDescuentosComp">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center">Descuentos</th>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: justify"><b>Prima Nivel Ejecutivo: </b> Equivalente al 20% del salario básico</td>
+                                                    <th style="width: 40%; text-align: left">Concepto</th>
+                                                    <th style="width: 20%; text-align: center">2022</th>
+                                                    <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">Diferencia</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaTotalComp">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center">Total</th>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: justify"><b>Prima orden público (Nivel Ejecutivo): </b> Equivalente al 15% del salario básico</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: justify"><b>Sanidad: </b> Descuento mensual equivalente al 4% del salario básico</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: justify"><b>Caja de sueldos de retiro (CASUR): </b> Descuento mensual equivalente al 6% del salario básico</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: justify"><b>Ahorro obligatorio CAPROVIMPO: </b> Descuento mensual equivalente al 7% o 10% del salario básico</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: justify"><b>Auxilio mutuo pagaduría DIBIE: </b> Descuento mensual variable equivalente a $50 por cada afiliado de la Institución fallecido en el respectivo mes</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: justify">
-                                                        <b>Afiliación o aumento Caja de sueldos de retiro CASUR: </b> Descuento por única vez equivalente al 30% del básico del primer salario
-                                                        (nuevos PT o ST) o de 10 días del aumento de salario para los demás uniformados aplicado en el retroactivo. Se calcula en base a la siguiente fórmula:
-                                                        retroactivo total (sin descuentos) dividido por cantidad de meses de retroactivo (4 para el mes de abril), multiplicado por 10 y dividido por 30, aproximadamente
-                                                        <br />
-                                                        <img src="formula.png" style="height:60px" />
-                                                    </td>
+                                                    <th style="width: 40%; text-align: left">Concepto</th>
+                                                    <th style="width: 20%; text-align: center">2022</th>
+                                                    <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">Diferencia</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -293,15 +373,155 @@
                                         </table>
                                     </div>
                                     <div class="card-footer">
-                                        <button class="btn btn-success" id="btnRegresar">Regresar</button>
+                                        <div>
+                                            <button class="btn btn-success" id="btnRegresarSalario">Regresar</button>
+                                            <button class="btn btn-primary" id="btnVerRetroactivo">Ver
+                                                Retroactivo</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+
+                    <div class="row" id="contenedorRetro" style="display:none">
+                        <div class="col-md-8 col-12">
+                            <div class="card card-primary">
+                                <div class="card-header" style="background: #002f62">
+                                    <h2 class="card-title">Posible Retroactivo</h2>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengosRetro">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDescuentosRetro">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Descuentos</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaTotalRetro">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Total</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div>
+                                            <button class="btn btn-success"
+                                                id="btnRegresarSalarioComp">Regresar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
             </section>
         </div>
+
+        <div class="modal fade" id="modalDescuentos">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="card-header" style="background: #002f62">
+                        <h3 class="card-title text-white">Agregar otros descuentos (Bancos, cooperativas, etc.)</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nombre decuento</label>
+                            <input class="form-control" id="nombreDescuento" placeholder="Ingrese nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Ingrese valor</label>
+                            <input type="number" class="form-control" id="valorDescuento"
+                                placeholder="Ingrese solo números">
+                        </div>
+                        <p style="color: red;font-weight: 700;">Tenga en cuenta que a estos valores son fijos y NO les
+                            será aplicado el aumento</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" style="background: red;"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="btnAgregarDescuento">Agregar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <div class="modal fade" id="modalDevengos">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="card-header" style="background: #002f62">
+                        <h3 class="card-title text-white">Agregar otros devengos (Primas o similares) </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nombre devengo</label>
+                            <input class="form-control" id="nombreDevengo" placeholder="Ingrese nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Ingrese valor</label>
+                            <input type="number" class="form-control" id="valorDevengo"
+                                placeholder="Ingrese solo números">
+                        </div>
+                        <p style="color: red;font-weight: 700;">Tenga en cuenta que a estos también les será aplicado el
+                            aumento</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" style="background: red;"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="btnAgregarDevengo">Agregar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -351,4 +571,5 @@
     <script src="CalculoValores.js"></script>
     <script src="resources/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 </body>
+
 </html>
