@@ -13,12 +13,13 @@ $("#btnCalcular").click(() => {
     var aumento = $("#aumento").val();
     var coma = [...aumento].filter(x => x === ',').length;
     var punto = [...aumento].filter(x => x === '.').length;
+    var espacio = [...aumento].filter(x => x === ' ').length;
 
-    if (coma > 0 || punto > 1) {
+    if (coma > 0 || punto > 1 || espacio > 0) {
         Swal.fire({
             icon: 'error',
             title: '¡Error en porcentaje!',
-            text: 'Para separar decimales solo debe utilizar un punto "." ',
+            text: 'Para separar decimales solo debe utilizar un punto "." y sin espacios',
         })
         return false;
     }
@@ -132,6 +133,7 @@ $("#btnCalcular").click(() => {
     );
     $("#contenedorDatos").hide(500);
     $("#contenedorSalario").show(500);
+    SubirPagina();
 });
 
 function GuardarMensaje() {
@@ -253,5 +255,11 @@ $("#selecGrado").change(() => {
 $("#btnRegresar").click(() => {
     $("#contenedorDatos").show(500);
     $("#contenedorSalario").hide(500);
+    SubirPagina();
+
 });
+
+function SubirPagina() {
+    $('html, body').animate({ scrollTop: -100 /*medida de pixeles a desplazar desde el tope superior*/ })
+}
 
