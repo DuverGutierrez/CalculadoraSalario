@@ -62,11 +62,11 @@ $("#btnCalcular").click(() => {
 
     asigBasicRetro = (asigBasic - ElimAumento(asigBasic)) * mes;
     primaOPRetro = (primaOP - ElimAumento(primaOP)) * mes;
-    primaNERetro = (primaNE -ElimAumento(primaNE)) * mes;
+    primaNERetro = (primaNE - ElimAumento(primaNE)) * mes;
     SubFamRetro = 0;
     subFamNERetro = (SumAumento(subFamNE) - subFamNE) * mes;
     subAlimentacionRetro = (SumAumento(subAlimentacion) - subAlimentacion) * mes;
-    bonifSeguroRetro = (SumAumento(bonifSeguro)- bonifSeguro) * mes;
+    bonifSeguroRetro = (SumAumento(bonifSeguro) - bonifSeguro) * mes;
     titleSubFamRetro = "Subsidio familiar";
     primaExpRetro = (primaExp - ElimAumento(primaExp)) * mes;
     distincionRetro = 0;
@@ -85,14 +85,14 @@ $("#btnCalcular").click(() => {
     }
     else if ($("#selecAsisFam").val() != 0) {
         SubFam = asigBasic * $("#selecAsisFam").val() / 100;
-        SubFamRetro = (SubFam -ElimAumento(SubFam)) * mes;
+        SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
 
         titleSubFam = "Bonificación Asistencia familiar";
         titleSubFamRetro = "Bonificación Asistencia familiar";
     }
     else if ($("#selecSubFam").val() != 0) {
         SubFam = subFamNE * $("#selecSubFam").val();
-        SubFamRetro = (SubFam -ElimAumento(SubFam)) * mes;
+        SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
     }
 
     $("#tablaDevengos tbody").empty();
@@ -102,104 +102,104 @@ $("#btnCalcular").click(() => {
     $("#tablaDescuentosComp tbody").empty();
 
     $("#tablaDevengos tbody").append(
-        `<tr><td>Asignación básica</td><td style="text-align: right" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
-         <tr><td>Subsidio alimentación</td><td style="text-align: right" id="subAlim">${ConvertirEnString(subAlimentacion)}</td></tr>
-         <tr><td>Bonificación seguro de vida</td><td style="text-align: right" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td></tr>
-         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right" id="primaNE">${ConvertirEnString(primaNE)}</td></tr>`
+        `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
+         <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td></tr>
+         <tr><td>Bonificación seguro de vida</td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td></tr>
+         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td></tr>`
     );
 
     $("#tablaDevengosComp tbody").append(
         `<tr>
             <td>Asignación básica</td>
-            <td style="text-align: right" id="asigBasic">${ConvertirEnString(ElimAumento(asigBasic))}</td>
-            <td style="text-align: right" id="asigBasic">${ConvertirEnString(asigBasic)}</td>
-            <td style="text-align: right" id="asigBasic">${ConvertirEnString(asigBasic - ElimAumento(asigBasic))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(ElimAumento(asigBasic))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic - ElimAumento(asigBasic))}</td>
         </tr>
         <tr>
             <td>Subsidio alimentación</td>
-            <td style="text-align: right" id="subAlim">${ConvertirEnString(ElimAumento(subAlimentacion))}</td>
-            <td style="text-align: right" id="subAlim">${ConvertirEnString(subAlimentacion)}</td>
-            <td style="text-align: right" id="subAlim">${ConvertirEnString(subAlimentacion - ElimAumento(subAlimentacion))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(ElimAumento(subAlimentacion))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion - ElimAumento(subAlimentacion))}</td>
         </tr>
         <tr>
             <td>Bonificación seguro de vida</td>
-            <td style="text-align: right" id="bonSegVida">${ConvertirEnString(ElimAumento(bonifSeguro))}</td>
-            <td style="text-align: right" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td>
-            <td style="text-align: right" id="bonSegVida">${ConvertirEnString(bonifSeguro - ElimAumento(bonifSeguro))}
+            <td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(ElimAumento(bonifSeguro))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguro - ElimAumento(bonifSeguro))}
             </td>
         </tr>
         <tr>
             <td>Prima nivel ejecutivo</td>
-            <td style="text-align: right" id="primaNE">${ConvertirEnString(ElimAumento(primaNE))}</td>
-            <td style="text-align: right" id="primaNE">${ConvertirEnString(primaNE)}</td>
-            <td style="text-align: right" id="primaNE">${ConvertirEnString(primaNE - ElimAumento(primaNE))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(ElimAumento(primaNE))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE - ElimAumento(primaNE))}</td>
         </tr>`
     );
 
     $("#tablaDevengosRetro tbody").append(
-        `<tr><td>Asignación básica</td><td style="text-align: right" id="asigBasic">${ConvertirEnString(asigBasicRetro)}</td></tr>
-         <tr><td>Subsidio alimentación</td><td style="text-align: right" id="subAlim">${ConvertirEnString(subAlimentacionRetro)}</td></tr>
-         <tr><td>Bonificación seguro de vida </td><td style="text-align: right" id="bonSegVida">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
-         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
+        `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasicRetro)}</td></tr>
+         <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacionRetro)}</td></tr>
+         <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
+         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
     );
 
     if (primaOP > 0) {
 
         $("#tablaDevengos tbody").append(
-            `<tr><td>Prima orden público</td><td style="text-align: right" id="primaExp">${ConvertirEnString(primaOP)}</td></tr>`
+            `<tr><td>Prima orden público</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaOP)}</td></tr>`
         );
 
         $("#tablaDevengosComp tbody").append(
             `<tr>
                 <td>Prima orden público</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(ElimAumento(primaOP))}</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(primaOP)}</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(primaOP - ElimAumento(primaOP))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(ElimAumento(primaOP))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaOP)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaOP - ElimAumento(primaOP))}</td>
             </tr>`
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td>Prima orden público</td><td style="text-align: right" id="primaExp">${ConvertirEnString(primaOPRetro)}</td></tr>`
+            `<tr><td>Prima orden público</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaOPRetro)}</td></tr>`
         );
     }
 
     if (primaExp > 0) {
 
         $("#tablaDevengos tbody").append(
-            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right" id="primaExp">${ConvertirEnString(primaExp)}</td></tr>`
+            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp)}</td></tr>`
         );
 
         $("#tablaDevengosComp tbody").append(
             `<tr>
                 <td>Prima retorno a la experiencia</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(ElimAumento(primaExp))}</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(primaExp)}</td>
-                <td style="text-align: right" id="primaExp">${ConvertirEnString(primaExp - ElimAumento(primaExp))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(ElimAumento(primaExp))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp - ElimAumento(primaExp))}</td>
             </tr>`
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right" id="primaExp">${ConvertirEnString(primaExpRetro)}</td></tr>`
+            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExpRetro)}</td></tr>`
         );
     }
 
     if (SubFam > 0) {
 
         $("#tablaDevengos tbody").append(
-            `<tr><td id="tituloSubFam">${titleSubFam}</td><td style="text-align: right" id="SubFam">${ConvertirEnString(SubFam)}</td></tr>`
+            `<tr><td id="tituloSubFam">${titleSubFam}</td><td style="text-align: right; white-space: nowrap;" id="SubFam">${ConvertirEnString(SubFam)}</td></tr>`
         );
 
         $("#tablaDevengosComp tbody").append(
             `<tr>
                 <td id="tituloSubFam">${titleSubFam}</td>
-                <td style="text-align: right" id="SubFam">${ConvertirEnString(ElimAumento(SubFam))}</td>
-                <td style="text-align: right" id="SubFam">${ConvertirEnString(SubFam)}</td>
-                <td style="text-align: right" id="SubFam">${ConvertirEnString(SubFam - ElimAumento(SubFam))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="SubFam">${ConvertirEnString(ElimAumento(SubFam))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="SubFam">${ConvertirEnString(SubFam)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="SubFam">${ConvertirEnString(SubFam - ElimAumento(SubFam))}</td>
             </tr>`
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td id="tituloSubFam">${titleSubFamRetro}</td><td style="text-align: right" id="SubFam">${ConvertirEnString(SubFamRetro)}</td></tr>`
+            `<tr><td id="tituloSubFam">${titleSubFamRetro}</td><td style="text-align: right; white-space: nowrap;" id="SubFam">${ConvertirEnString(SubFamRetro)}</td></tr>`
         );
     }
 
@@ -208,20 +208,20 @@ $("#btnCalcular").click(() => {
         distincionRetro = (distincion - ElimAumento(distincion)) * mes;
 
         $("#tablaDevengos tbody").append(
-            `<tr><td>Distinción patrulleros</td><td style="text-align: right" id="primaExp">${ConvertirEnString(distincion)}</td></tr>`
+            `<tr><td>Distinción patrulleros</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(distincion)}</td></tr>`
         );
 
         $("#tablaDevengosComp tbody").append(
             `<tr>
                 <td>Distinción patrulleros</td>
-                <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(distincion))}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(distincion)}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(distincion - ElimAumento(distincion))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(distincion))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(distincion)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(distincion - ElimAumento(distincion))}</td>
             </tr>`
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td>Distinción patrulleros</td><td style="text-align: right" id="primaExp">${ConvertirEnString(distincionRetro)}</td></tr>`
+            `<tr><td>Distinción patrulleros</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(distincionRetro)}</td></tr>`
         );
     }
 
@@ -229,79 +229,79 @@ $("#btnCalcular").click(() => {
         primaPer = CalculoPer(asigBasic);
         primaPerRetro = (primaPer - ElimAumento(primaPer)) * mes;
         $("#tablaDevengos tbody").append(
-            `<tr><td>Bonificación de permanencia</td><td style="text-align: right" id="primaPer">${ConvertirEnString(primaPer)}</td></tr>`
+            `<tr><td>Bonificación de permanencia</td><td style="text-align: right; white-space: nowrap;" id="primaPer">${ConvertirEnString(primaPer)}</td></tr>`
         );
 
         $("#tablaDevengos tbody").append(
             `<tr>
                 <td>Bonificación de permanencia</td>
-                <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(primaPer))}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(primaPer)}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(primaPer - ElimAumento(primaPer))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(primaPer))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(primaPer)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(primaPer - ElimAumento(primaPer))}</td>
             </tr>`
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td>Bonificación de permanencia</td><td style="text-align: right" id="primaPer">${ConvertirEnString(primaPerRetro)}</td></tr>`
+            `<tr><td>Bonificación de permanencia</td><td style="text-align: right; white-space: nowrap;" id="primaPer">${ConvertirEnString(primaPerRetro)}</td></tr>`
         );
     }
 
     $("#tablaDescuentos tbody").append(
-        `<tr><td>Auxilio mutuo (valor promedio)</td><td style="text-align: right" id="auxDibie">${ConvertirEnString(auxMutuo)}</td></tr>
-         <tr><td>Bonificación seguro de vida </td><td style="text-align: right" id="seguro">${ConvertirEnString(bonifSeguro)}</td></tr>
-         <tr><td>Sanidad</td><td style="text-align: right" id="sanidad">${ConvertirEnString(sanidad)}</td></tr>
-         <tr><td>Cotización caja sueldos retiro</td><td style="text-align: right" id="casur">${ConvertirEnString(casur)}</td></tr>`
+        `<tr><td>Auxilio mutuo (valor promedio)</td><td style="text-align: right; white-space: nowrap;" id="auxDibie">${ConvertirEnString(auxMutuo)}</td></tr>
+         <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="seguro">${ConvertirEnString(bonifSeguro)}</td></tr>
+         <tr><td>Sanidad</td><td style="text-align: right; white-space: nowrap;" id="sanidad">${ConvertirEnString(sanidad)}</td></tr>
+         <tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(casur)}</td></tr>`
     );
 
     $("#tablaDescuentosComp tbody").append(
         `<tr>
             <td>Auxilio mutuo (valor promedio)</td>
-            <td style="text-align: right" id="">${ConvertirEnString(auxMutuo)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(auxMutuo)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(0)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(auxMutuo)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(auxMutuo)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(0)}</td>
         </tr>
         <tr>
             <td>Bonificación seguro de vida</td>
-            <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(bonifSeguro))}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(bonifSeguro)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(bonifSeguro - ElimAumento(bonifSeguro))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(bonifSeguro))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(bonifSeguro)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(bonifSeguro - ElimAumento(bonifSeguro))}</td>
         </tr>
         <tr>
             <td>Sanidad</td>
-            <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(sanidad))}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(sanidad)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(sanidad - ElimAumento(sanidad))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(sanidad))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(sanidad)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(sanidad - ElimAumento(sanidad))}</td>
         </tr>
         <tr>
-            <td>Cotización caja sueldos retiro</td>
-            <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(casur))}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(casur)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(casur - ElimAumento(casur))}</td>
+            <td>Cotización CASUR</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(casur))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(casur)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(casur - ElimAumento(casur))}</td>
         </tr>`
     );
 
     $("#tablaDescuentosRetro tbody").append(
-        `<tr><td>Bonificación seguro de vida </td><td style="text-align: right" id="seguro">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
-         <tr><td>Sanidad</td><td style="text-align: right" id="sanidad">${ConvertirEnString(sanidadRetro)}</td></tr>
-         <tr><td>Cotización caja sueldos retiro</td><td style="text-align: right" id="casur">${ConvertirEnString(casurRetro)}</td></tr>`
+        `<tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="seguro">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
+         <tr><td>Sanidad</td><td style="text-align: right; white-space: nowrap;" id="sanidad">${ConvertirEnString(sanidadRetro)}</td></tr>
+         <tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(casurRetro)}</td></tr>`
     );
 
     if (cajaHonor > 0) {
         $("#tablaDescuentos tbody").append(
-            `<tr><td>Ahorro obligatorio CAPROVIMPO</td><td style="text-align: right" id="cajaHonor">${ConvertirEnString(cajaHonor)}</td></tr>`
+            `<tr><td>Ahorro obligatorio CajaHonor</td><td style="text-align: right; white-space: nowrap;" id="cajaHonor">${ConvertirEnString(cajaHonor)}</td></tr>`
         );
 
         $("#tablaDescuentosComp tbody").append(
             `<tr>
-                <td>Ahorro obligatorio CAPROVIMPO</td>
-                <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(cajaHonor))}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(cajaHonor)}</td>
-                <td style="text-align: right" id="">${ConvertirEnString(cajaHonor - ElimAumento(cajaHonor))}</td>
+                <td>Ahorro obligatorio CajaHonor</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(cajaHonor))}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(cajaHonor)}</td>
+                <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(cajaHonor - ElimAumento(cajaHonor))}</td>
             </tr>`
         );
 
         $("#tablaDescuentosRetro tbody").append(
-            `<tr><td>Ahorro obligatorio CAPROVIMPO</td><td style="text-align: right" id="cajaHonor">${ConvertirEnString(cajaHonorRetro)}</td></tr>`
+            `<tr><td>Ahorro obligatorio CajaHonor</td><td style="text-align: right; white-space: nowrap;" id="cajaHonor">${ConvertirEnString(cajaHonorRetro)}</td></tr>`
         );
     }
 
@@ -327,42 +327,42 @@ function CalcularTotal() {
     let totalRetro = devengadoRetro - descuentosRetro;
 
     $("#tablaTotal tbody").append(
-        `<tr><td>Total devengado</td><td style="text-align: right" id="totalDeveng">${ConvertirEnString(devengado)}</td></tr>
-        <tr><td>Total descuentos</td><td style="text-align: right" id="totalDesc">${ConvertirEnString(descuentos)}</td></tr>
+        `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;" id="totalDeveng">${ConvertirEnString(devengado)}</td></tr>
+        <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;" id="totalDesc">${ConvertirEnString(descuentos)}</td></tr>
         <tr><td style="font-weight: 700; font-size: 18px; background: #73ff78;">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="totalNeto">${ConvertirEnString(total)}</td></tr>`
     );
-    
+
     $("#tablaTotalComp tbody").append(
         `<tr>
             <td>Total devengado</td>
-            <td style="text-align: right" id="">${ConvertirEnString(ElimAumento(devengado))}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(devengado)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(devengado - ElimAumento(devengado))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(devengado))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(devengado)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(devengado - ElimAumento(devengado))}</td>
         </tr>
         <tr>
             <td>Total descuentos</td>
-            <td style="text-align: right" id="">${ConvertirEnString(descuentosComp)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(descuentos)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(descuentos - descuentosComp)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(descuentosComp)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(descuentos)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(descuentos - descuentosComp)}</td>
         </tr>
         <tr>
             <td style="font-weight: 700; font-size: 18px; background: #73ff78;">Neto a pagar</td>
-            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="">${ConvertirEnString(devengadoComp - descuentosComp)}</td>
-            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="">${ConvertirEnString(devengado - descuentos)}</td>
-            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="">${ConvertirEnString((devengado - descuentos) - (devengadoComp - descuentosComp))}</td>
+            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;" id="">${ConvertirEnString(devengadoComp - descuentosComp)}</td>
+            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;" id="">${ConvertirEnString(devengado - descuentos)}</td>
+            <td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;" id="">${ConvertirEnString((devengado - descuentos) - (devengadoComp - descuentosComp))}</td>
         </tr>`
     );
 
     $("#tablaTotalRetro tbody").append(
-        `<tr><td>Total devengado</td><td style="text-align: right" id="totalDeveng">${ConvertirEnString(devengadoRetro)}</td></tr>
-        <tr><td>Total descuentos</td><td style="text-align: right" id="totalDesc">${ConvertirEnString(descuentosRetro)}</td></tr>
-        <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78;" id="totalNeto">${ConvertirEnString(totalRetro)}</td></tr>`
+        `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(devengadoRetro)}</td></tr>
+        <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(descuentosRetro)}</td></tr>
+        <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(totalRetro)}</td></tr>`
     );
 
     $("#afilCasur").remove();
 
     $("#tablaDescuentosRetro tbody").append(
-        `<tr id="afilCasur"><td>Afiliación o aumento CASUR</td><td style="text-align: right">${ConvertirEnString(afilCasur)}</td></tr>`
+        `<tr id="afilCasur"><td>Afiliación o aumento CASUR</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(afilCasur)}</td></tr>`
     );
 
     $("#contenedorDatos").hide(500);
@@ -389,18 +389,23 @@ $("#btnAgregarDescuento").click(() => {
     let nombreDescuento = $("#nombreDescuento").val();
     let valorDescuento = ConvertirEnFloat($("#valorDescuento").val());
 
+    if (nombreDescuento == "")
+        nombreDescuento = "Descuento x";
+    if (valorDescuento == "" || valorDescuento == null || Number.isNaN(valorDescuento))
+        valorDescuento = 0;
+
     otrosDescuentos += valorDescuento;
 
     $("#tablaDescuentos tbody").append(
-        `<tr><td>${nombreDescuento}</td><td style="text-align: right" id="">${ConvertirEnString(valorDescuento)}</td></tr>`
+        `<tr><td>${nombreDescuento}</td><td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDescuento)}</td></tr>`
     );
 
     $("#tablaDescuentosComp tbody").append(
         `<tr>
             <td>${nombreDescuento}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(valorDescuento)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(valorDescuento)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(0)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDescuento)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDescuento)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(0)}</td>
         </tr>`
     );
 
@@ -411,26 +416,32 @@ $("#btnAgregarDescuento").click(() => {
 $("#btnAgregarDevengo").click(() => {
     let nombreDevengo = $("#nombreDevengo").val();
     let valorDevengo = ConvertirEnFloat($("#valorDevengo").val());
+
+    if (nombreDevengo == "")
+        nombreDevengo = "Devengo x";
+    if (valorDevengo == "" || valorDevengo == null || Number.isNaN(valorDevengo))
+        valorDevengo = 0;
+
     let valorDevengoRetro = (SumAumento(valorDevengo) - valorDevengo) * mes;
 
     otrosDevengos += valorDevengo;
     otrosDevengosRetro += valorDevengoRetro;
 
     $("#tablaDevengos tbody").append(
-        `<tr><td>${nombreDevengo}</td><td style="text-align: right" id="">${ConvertirEnString(valorDevengo)}</td></tr>`
+        `<tr><td>${nombreDevengo}</td><td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDevengo)}</td></tr>`
     );
 
     $("#tablaDevengosComp tbody").append(
         `<tr>
             <td>${nombreDevengo}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(valorDevengo)}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(SumAumento(valorDevengo))}</td>
-            <td style="text-align: right" id="">${ConvertirEnString(SumAumento(valorDevengo) - valorDevengo)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDevengo)}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(SumAumento(valorDevengo))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(SumAumento(valorDevengo) - valorDevengo)}</td>
         </tr>`
     );
 
     $("#tablaDevengosRetro tbody").append(
-        `<tr><td>${nombreDevengo}</td><td style="text-align: right" id="">${ConvertirEnString(valorDevengoRetro)}</td></tr>`
+        `<tr><td>${nombreDevengo}</td><td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDevengoRetro)}</td></tr>`
     );
 
     CalcularTotal();
@@ -563,9 +574,6 @@ $("#btnRegresarSalario").click(() => {
 
 $("#btnRegresarSalarioComp, #btnComparar").click(() => {
 
-    if($(window).width() < 520){
-        $("#alertaPantalla").css("display", "block");
-    }
     $("#contenedorDatos").hide(500);
     $("#contenedorSalario").hide(500);
     $("#contenedorSalarioComp").show(500);
