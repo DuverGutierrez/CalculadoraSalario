@@ -562,7 +562,7 @@ $("#btnRegresarDatos").click(() => {
     SubirPagina();
 });
 
-$("#btnRegresarSalario").click(() => {
+$("#btnRegresarSalario, #btnRegresarSalario1").click(() => {
 
     $("#contenedorDatos").hide(500);
     $("#contenedorSalario").show(500);

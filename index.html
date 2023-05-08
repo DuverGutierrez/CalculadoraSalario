@@ -134,7 +134,8 @@
                                     <p style="text-align: justify;">Tenga en cuenta que la
                                         información aquí mostrada es solo de referencia, por lo cual, los valores reales
                                         pueden variar dependiendo de cada persona y de los datos ingresados.</p>
-                                    <p style="text-align: justify; color:red">El porcentaje de incremento salarial establecido (14.67%) se
+                                    <p style="text-align: justify; color:red">El porcentaje de incremento salarial
+                                        establecido (14.67%) se
                                         basa en la última propuesta del gobierno nacional en la mesa negociación del
                                         sector público. Usted puede modificarla según sea necesario.</p>
                                 </div>
@@ -329,9 +330,16 @@
                                                 <br>
                                             </div>
                                             <div class="col-md-12 col-12" style="padding: 5px;">
+                                                <hr>
+                                            </div>
+                                            <div class="col-md-6 col-12" style="padding: 5px;">
                                                 <button class="btn btn-greenDark" style="width: 100%;"
-                                                    id="btnComparar">Comparar con salario
-                                                    anterior</button>
+                                                    id="btnComparar">Comparar 2022-2023</button>
+                                            </div>
+                                            <div class="col-md-6 col-12" style="padding: 5px;">
+                                                <button class="btn btn-primary" style="width: 100%;"
+                                                    id="btnVerRetroactivo">Ver
+                                                    Retroactivo</button>
                                             </div>
                                         </div>
                                     </div>
@@ -406,8 +414,6 @@
                                     <div class="card-footer">
                                         <div>
                                             <button class="btn btn-success" id="btnRegresarSalario">Regresar</button>
-                                            <button class="btn btn-primary" id="btnVerRetroactivo">Ver
-                                                Retroactivo</button>
                                         </div>
                                     </div>
                                 </div>
@@ -475,8 +481,7 @@
 
                                     <div class="card-footer">
                                         <div>
-                                            <button class="btn btn-success"
-                                                id="btnRegresarSalarioComp">Regresar</button>
+                                            <button class="btn btn-success" id="btnRegresarSalario1">Regresar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -599,8 +604,8 @@
     <script src="resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="resources/dist/js/adminlte.js"></script>
-    <script src="CalculoValores.js"></script>
     <script src="resources/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="CalculoValores.js?v=4"></script>
 </body>
 
 </html>
