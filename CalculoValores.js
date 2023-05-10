@@ -105,7 +105,7 @@ $("#btnCalcular").click(() => {
     }
     else if ($("#selecAsisFam").val() != 0) {
         SubFam = asigBasic * $("#selecAsisFam").val() / 100;
-        SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
+        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * mes)/2;
 
         titleSubFam = "Bonificación Asistencia familiar";
         titleSubFamRetro = "Bonificación Asistencia familiar";
