@@ -63,7 +63,9 @@ $("#btnCalcular").click(() => {
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
     SubFam = 0;
     subFamNE = SumAumento(subFamNE);
+    subAlimentacion = 68658;
     subAlimentacion = SumAumento(subAlimentacion);
+    bonifSeguro = 17311;
     bonifSeguro = SumAumento(bonifSeguro);
 
     distincion = 0;
@@ -88,8 +90,8 @@ $("#btnCalcular").click(() => {
     asigBasicRetro = (asigBasic - ElimAumento(asigBasic)) * mes;
     SubFamRetro = 0;
     subFamNERetro = (SumAumento(subFamNE) - subFamNE) * mes;
-    subAlimentacionRetro = (SumAumento(subAlimentacion) - subAlimentacion) * mes;
-    bonifSeguroRetro = (SumAumento(bonifSeguro) - bonifSeguro) * mes;
+    subAlimentacionRetro = (subAlimentacion - ElimAumento(subAlimentacion)) * mes;
+    bonifSeguroRetro = (bonifSeguro - ElimAumento(bonifSeguro)) * mes;
     primaExpRetro = (primaExp - ElimAumento(primaExp)) * mes;
     distincionRetro = 0;
     sanidadRetro = (sanidad - ElimAumento(sanidad)) * mes;
@@ -461,11 +463,11 @@ $("#btnAgregarDevengo").click(() => {
 
     let valorDevengoRetro = (SumAumento(valorDevengo) - valorDevengo) * mes;
 
-    otrosDevengos += valorDevengo;
+    otrosDevengos += SumAumento(valorDevengo);
     otrosDevengosRetro += valorDevengoRetro;
 
     $("#tablaDevengos tbody").append(
-        `<tr><td>${nombreDevengo}</td><td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(valorDevengo)}</td></tr>`
+        `<tr><td>${nombreDevengo}</td><td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(SumAumento(valorDevengo))}</td></tr>`
     );
 
     $("#tablaDevengosComp tbody").append(
@@ -597,7 +599,7 @@ $("#selecGrado").change(() => {
     $("#selecSubFam").val("0");
     $("#selecSubFam_OF").val("0");
     $("#distincion").val("0");
-    $("#selecPrimaPer").val("0");    
+    $("#selecPrimaPer").val("0");
 
     gradNiv = $("#selecGrado").val();
     gradNiv = $(`#selecGrado option[value='${gradNiv}']`)[0].innerText;
@@ -697,9 +699,9 @@ $(document).ready(function () {
     setInterval(function () {
         $("#efectoBlink").animate({
             opacity: 0
-        }, 500, function () {
-            $("#efectoBlink").animate({ opacity: 1 }, 500)
+        }, 200, function () {
+            $("#efectoBlink").animate({ opacity: 1 }, 200)
         }
         );
-    }, 1000)
+    }, 600)
 })
