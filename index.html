@@ -63,6 +63,27 @@
             margin: 0 !important;
             font-size: 1.4rem !important;
         }
+
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        .parpadeo {
+            display: none;
+        }
     </style>
 </head>
 
@@ -124,6 +145,7 @@
                                     <h2 class="card-title">Bienvenido</h2>
                                 </div>
                                 <div class="card-body">
+                                    <h4 id="efectoBlink" style="color: #05bf2d; text-align: center;">((( Actualización 09-05-2023 )))</h4>
                                     <p style="text-align: justify;"><b>Información importante: </b>Desde esta
                                         herramienta usted podrá calcular el
                                         salario 2023 dependiendo del aumento
@@ -134,10 +156,10 @@
                                     <p style="text-align: justify;">Tenga en cuenta que la
                                         información aquí mostrada es solo de referencia, por lo cual, los valores reales
                                         pueden variar dependiendo de cada persona y de los datos ingresados.</p>
-                                    <p style="text-align: justify; color:red">El porcentaje de incremento salarial
-                                        establecido (14.67%) se
+                                    <!--<p style="text-align: justify; color:red">El porcentaje de incremento salarial
+                                        establecido (14.62%) se
                                         basa en la última propuesta del gobierno nacional en la mesa negociación del
-                                        sector público. Usted puede modificarla según sea necesario.</p>
+                                        sector público. Usted puede modificarla según sea necesario.</p>-->
                                 </div>
                             </div>
                         </div>
@@ -149,7 +171,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Porcentaje aumento</label>
-                                        <input class="form-control" id="aumento" value="14.67">
+                                        <input class="form-control" id="aumento" value="14.62">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Grado</label>
@@ -160,16 +182,30 @@
                                             <option value="42.6660">IJ</option>
                                             <option value="44.8164">SC</option>
                                             <option value="52.7816">CM</option>
+                                            <option disabled>-----</option>
+                                            <option value="28.9366">ST</option>
+                                            <option value="32.7292">TE</option>
+                                            <option value="37.4682">CT</option>
+                                            <option value="45.5288">MY</option>
+                                            <option value="52.3616">TC</option>
+                                            <option value="67.1283">CR</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: block;" id="mostrarSelecOrdPub">
                                         <label for="">Orden público</label>
                                         <select class="form-control" id="selecOrdPub">
                                             <option value="0">No</option>
                                             <option value="15">Si</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: none;" id="mostrarSelecOrdPub_OF">
+                                        <label for="">Orden público</label>
+                                        <select class="form-control" id="selecOrdPub_OF">
+                                            <option value="0">No</option>
+                                            <option value="25">Si</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="display: block;" id="mostrarSelectExp">
                                         <label for="">Tiempo en el grado</label>
                                         <select class="form-control" id="selectExp">
                                             <option value="1">1 año</option>
@@ -197,10 +233,39 @@
                                             <option value="23">23 años</option>
                                             <option value="24">24 años</option>
                                             <option value="25">25 años</option>
-
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: none;" id="mostrarSelectExp_OF">
+                                        <label for="">Tiempo de servicio</label>
+                                        <select class="form-control" id="selectExp_OF">
+                                            <option value="1">1 año</option>
+                                            <option value="2">2 años</option>
+                                            <option value="3">3 años</option>
+                                            <option value="4">4 años</option>
+                                            <option value="5">5 años</option>
+                                            <option value="6">6 años</option>
+                                            <option value="7">7 años</option>
+                                            <option value="8">8 años</option>
+                                            <option value="9">9 años</option>
+                                            <option value="10">10 años</option>
+                                            <option value="11">11 años</option>
+                                            <option value="12">12 años</option>
+                                            <option value="13">13 años</option>
+                                            <option value="14">14 años</option>
+                                            <option value="15">15 años</option>
+                                            <option value="16">16 años</option>
+                                            <option value="17">17 años</option>
+                                            <option value="18">18 años</option>
+                                            <option value="19">19 años</option>
+                                            <option value="20">20 años</option>
+                                            <option value="21">21 años</option>
+                                            <option value="22">22 años</option>
+                                            <option value="23">23 años</option>
+                                            <option value="24">24 años</option>
+                                            <option value="25">25 años</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="display: block;" id="mostrarSelecAsisFam">
                                         <label for="">Bonificación asistencia familiar</label>
                                         <select class="form-control" id="selecAsisFam">
                                             <option value="0">No aplica</option>
@@ -209,7 +274,7 @@
                                             <option value="35">Cónyuge y 2 hijos</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: block;" id="mostrarSelecSubFam">
                                         <label for="">Subsidio familiar</label>
                                         <select class="form-control" id="selecSubFam">
                                             <option value="0">No aplica</option>
@@ -222,15 +287,32 @@
                                             <option value="7">7 beneficiarios</option>
                                         </select>
                                     </div>
+                                    <div class="form-group" style="display: none;" id="mostrarSelecSubFam_OF">
+                                        <label for="">Subsidio familiar</label>
+                                        <select class="form-control" id="selecSubFam_OF">
+                                            <option value="0">No aplica</option>
+                                            <option value="30">Cónyuge</option>
+                                            <option value="35">Cónyuge y 1 hijo</option>
+                                            <option value="39">Cónyuge y 2 hijos</option>
+                                            <option value="43">Cónyuge y 3 hijos</option>
+                                            <option value="47">Cónyuge y 4 hijos</option>
+                                            <option value="5">1 hijo</option>
+                                            <option value="9">2 hijos</option>
+                                            <option value="13">3 hijos</option>
+                                            <option value="17">4 hijos</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="">Aporte a vivienda militar</label>
                                         <select class="form-control" id="selecCajaHonor">
                                             <option value="7">7%</option>
+                                            <option value="8">8%</option>
+                                            <option value="9">9%</option>
                                             <option value="10">10%</option>
                                             <option value="0">No aplica</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" id="mostrarSelecDistincion" style="display:block">
+                                    <div class="form-group" style="display:block" id="mostrarSelecDistincion">
                                         <label for="">Distinción patrulleros</label>
                                         <select class="form-control" id="distincion">
                                             <option value="0">No aplica</option>

@@ -22,12 +22,25 @@ let asigBasic = 0;
 let primaOP = 0;
 let primaNE = 0;
 let SubFam = 0;
-let titleSubFam = 0;
+let titleSubFam = "";
+let titlePrimaNE = "";
 let distincion = 0;
 let aumento = 0;
 let mes = 4;
+let nivel = false;
+let nivelOf = ["ST", "TE", "CT", "MY", "TC", "CR"];
+let gradNiv = "";
 
 $("#btnCalcular").click(() => {
+
+    gradNiv = $("#selecGrado").val();
+    gradNiv = $(`#selecGrado option[value='${gradNiv}']`)[0].innerText;
+
+    if (nivelOf.find((item) => item == gradNiv))
+        nivel = true;
+    else
+        nivel = false;
+
     aumento = $("#aumento").val();
     var coma = [...aumento].filter(x => x === ',').length;
     var punto = [...aumento].filter(x => x === '.').length;
@@ -47,30 +60,37 @@ $("#btnCalcular").click(() => {
     salarioBaseGen += (salarioBaseGen * $("#aumento").val() / 100);
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
-    primaOP = asigBasic * $("#selecOrdPub").val() / 100;
-    primaNE = asigBasic * 0.20;
     SubFam = 0;
     subFamNE = SumAumento(subFamNE);
     subAlimentacion = SumAumento(subAlimentacion);
     bonifSeguro = SumAumento(bonifSeguro);
-    titleSubFam = "Subsidio familiar";
-    primaExp = CalculoExp(asigBasic);
+
     distincion = 0;
     sanidad = asigBasic * 4 / 100;
     casur = asigBasic * 6 / 100;
     cajaHonor = asigBasic * $("#selecCajaHonor").val() / 100;
 
-    asigBasicRetro = (asigBasic - ElimAumento(asigBasic)) * mes;
+    if (nivel) {
+        primaOP = asigBasic * $("#selecOrdPub_OF").val() / 100;
+        primaNE = asigBasic * 0.495;
+        titlePrimaNE = "Prima de actividad";
+    } else {
+        primaOP = asigBasic * $("#selecOrdPub").val() / 100;
+        primaNE = asigBasic * 0.20;
+        titlePrimaNE = "Prima nivel ejecutivo";
+    }
+
+    primaExp = CalculoExp(asigBasic);
     primaOPRetro = (primaOP - ElimAumento(primaOP)) * mes;
     primaNERetro = (primaNE - ElimAumento(primaNE)) * mes;
+
+    asigBasicRetro = (asigBasic - ElimAumento(asigBasic)) * mes;
     SubFamRetro = 0;
     subFamNERetro = (SumAumento(subFamNE) - subFamNE) * mes;
     subAlimentacionRetro = (SumAumento(subAlimentacion) - subAlimentacion) * mes;
     bonifSeguroRetro = (SumAumento(bonifSeguro) - bonifSeguro) * mes;
-    titleSubFamRetro = "Subsidio familiar";
     primaExpRetro = (primaExp - ElimAumento(primaExp)) * mes;
     distincionRetro = 0;
-
     sanidadRetro = (sanidad - ElimAumento(sanidad)) * mes;
     casurRetro = (casur - ElimAumento(casur)) * mes;
     cajaHonorRetro = (cajaHonor - ElimAumento(cajaHonor)) * mes;
@@ -91,8 +111,21 @@ $("#btnCalcular").click(() => {
         titleSubFamRetro = "Bonificación Asistencia familiar";
     }
     else if ($("#selecSubFam").val() != 0) {
+
         SubFam = subFamNE * $("#selecSubFam").val();
         SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
+
+        titleSubFam = "Subsidio familiar NE";
+        titleSubFamRetro = "Subsidio familiar NE";
+
+    }
+    else if ($("#selecSubFam_OF").val() != 0) {
+
+        SubFam = subFamNE * $("#selecSubFam_OF").val();
+        SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
+
+        titleSubFam = "Subsidio familiar";
+        titleSubFamRetro = "Subsidio familiar";
     }
 
     $("#tablaDevengos tbody").empty();
@@ -101,11 +134,14 @@ $("#btnCalcular").click(() => {
     $("#tablaDevengosComp tbody").empty();
     $("#tablaDescuentosComp tbody").empty();
 
+    $("#tablaDevengosRetro tbody").empty();
+    $("#tablaDescuentosRetro tbody").empty();
+
     $("#tablaDevengos tbody").append(
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
          <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td></tr>
          <tr><td>Bonificación seguro de vida</td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td></tr>
-         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td></tr>`
+         <tr><td>${titlePrimaNE}</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td></tr>`
     );
 
     $("#tablaDevengosComp tbody").append(
@@ -129,7 +165,7 @@ $("#btnCalcular").click(() => {
             </td>
         </tr>
         <tr>
-            <td>Prima nivel ejecutivo</td>
+            <td>${titlePrimaNE}</td>
             <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(ElimAumento(primaNE))}</td>
             <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td>
             <td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE - ElimAumento(primaNE))}</td>
@@ -140,7 +176,7 @@ $("#btnCalcular").click(() => {
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasicRetro)}</td></tr>
          <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacionRetro)}</td></tr>
          <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
-         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
+         <tr><td>${titlePrimaNE}</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
     );
 
     if (primaOP > 0) {
@@ -510,6 +546,13 @@ function CalculoExp(asigBasic) {
     else if ($("#selecGrado").val() == 25.3733 && $("#selectExp").val() > 4) {
         primaExp = asigBasic * $("#selectExp").val() / 100;
     }
+    else if (nivel) {
+        if ($("#selectExp_OF").val() > 14) {
+            primaExp = asigBasic * ($("#selectExp_OF").val() - 5) / 100;
+        } else {
+            primaExp = 0;
+        }
+    }
     else {
         primaExp = 0;
     }
@@ -542,13 +585,57 @@ function CalculoPer(asigBasic) {
 }
 
 $("#selecGrado").change(() => {
+
+    $("#selecSubFam").val("0");
+    $("#selecAsisFam").val("0");
+    $("#selecSubFam_OF").val("0");
+
+    gradNiv = $("#selecGrado").val();
+    gradNiv = $(`#selecGrado option[value='${gradNiv}']`)[0].innerText;
+
+    if (nivelOf.find((item) => item == gradNiv))
+        nivel = true;
+    else
+        nivel = false;
+
     if ($("#selecGrado").val() == 25.3733) {
         $("#mostrarSelecDistincion").css("display", "block");
         $("#mostrarSelecPrimaPer").css("display", "none");
+
+        $("#mostrarSelecOrdPub").css("display", "block");
+        $("#mostrarSelectExp").css("display", "block");
+        $("#mostrarSelecSubFam").css("display", "block");
+        $("#mostrarSelecAsisFam").css("display", "block");
+
+        $("#mostrarSelecOrdPub_OF").css("display", "none");
+        $("#mostrarSelectExp_OF").css("display", "none");
+        $("#mostrarSelecSubFam_OF").css("display", "none");
+    }
+    else if (nivelOf.find((item) => item == gradNiv)) {
+        $("#mostrarSelecDistincion").css("display", "none");
+        $("#mostrarSelecPrimaPer").css("display", "none");
+
+        $("#mostrarSelecOrdPub").css("display", "none");
+        $("#mostrarSelectExp").css("display", "none");
+        $("#mostrarSelecSubFam").css("display", "none");
+        $("#mostrarSelecAsisFam").css("display", "none");
+
+        $("#mostrarSelecOrdPub_OF").css("display", "block");
+        $("#mostrarSelectExp_OF").css("display", "block");
+        $("#mostrarSelecSubFam_OF").css("display", "block");
     }
     else {
         $("#mostrarSelecDistincion").css("display", "none");
         $("#mostrarSelecPrimaPer").css("display", "block");
+
+        $("#mostrarSelecOrdPub").css("display", "block");
+        $("#mostrarSelectExp").css("display", "block");
+        $("#mostrarSelecSubFam").css("display", "block");
+        $("#mostrarSelecAsisFam").css("display", "block");
+
+        $("#mostrarSelecOrdPub_OF").css("display", "none");
+        $("#mostrarSelectExp_OF").css("display", "none");
+        $("#mostrarSelecSubFam_OF").css("display", "none");
     }
 });
 
@@ -592,9 +679,16 @@ $("#btnVerRetroactivo").click(() => {
     SubirPagina();
 });
 
-
-
 function SubirPagina() {
     $('html, body').animate({ scrollTop: -100 /*medida de pixeles a desplazar desde el tope superior*/ })
 }
 
+
+$(document).ready(function () {
+    setInterval(function () {
+        $("#efectoBlink").animate({ 
+            opacity: 0 }, 500, function () {
+            $("#efectoBlink").animate({ opacity: 1}, 500)}
+        );
+    }, 1000)
+})
