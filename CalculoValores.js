@@ -591,6 +591,14 @@ $("#selecGrado").change(() => {
     $("#selecAsisFam").val("0");
     $("#selecSubFam_OF").val("0");
 
+    $("#selecOrdPub").val("0");
+    $("#selecOrdPub_OF").val("0");
+    $("#selecAsisFam").val("0");
+    $("#selecSubFam").val("0");
+    $("#selecSubFam_OF").val("0");
+    $("#distincion").val("0");
+    $("#selecPrimaPer").val("0");    
+
     gradNiv = $("#selecGrado").val();
     gradNiv = $(`#selecGrado option[value='${gradNiv}']`)[0].innerText;
 
