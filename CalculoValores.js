@@ -2,6 +2,7 @@
 var gastRepreMin = 10285919;
 var salarioBaseGen = 0;
 var subAlimentacion = 68658;
+var subAlimentacionRetro = 0;
 var bonifSeguro = 17311;
 var auxMutuo = 5000;
 var subFamNE = 37866;
@@ -105,7 +106,7 @@ $("#btnCalcular").click(() => {
     }
     else if ($("#selecAsisFam").val() != 0) {
         SubFam = asigBasic * $("#selecAsisFam").val() / 100;
-        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * mes)/2;
+        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * mes) / 2;
 
         titleSubFam = "Bonificación Asistencia familiar";
         titleSubFamRetro = "Bonificación Asistencia familiar";
@@ -121,7 +122,7 @@ $("#btnCalcular").click(() => {
     }
     else if ($("#selecSubFam_OF").val() != 0) {
 
-        SubFam = subFamNE * $("#selecSubFam_OF").val();
+        SubFam = asigBasic * $("#selecSubFam_OF").val() / 100;
         SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
 
         titleSubFam = "Subsidio familiar";
@@ -268,7 +269,7 @@ $("#btnCalcular").click(() => {
             `<tr><td>Bonificación de permanencia</td><td style="text-align: right; white-space: nowrap;" id="primaPer">${ConvertirEnString(primaPer)}</td></tr>`
         );
 
-        $("#tablaDevengos tbody").append(
+        $("#tablaDevengosComp tbody").append(
             `<tr>
                 <td>Bonificación de permanencia</td>
                 <td style="text-align: right; white-space: nowrap;" id="">${ConvertirEnString(ElimAumento(primaPer))}</td>
@@ -350,14 +351,14 @@ function CalcularTotal() {
     $("#tablaTotalComp tbody").empty();
     $("#tablaTotalRetro tbody").empty();
 
-    devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + otrosDevengos;
+    devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + subAlimentacion + bonifSeguro + otrosDevengos;
     descuentos = sanidad + casur + cajaHonor + auxMutuo + bonifSeguro + otrosDescuentos;
     total = devengado - descuentos;
 
     let devengadoComp = ElimAumento(devengado);
     let descuentosComp = ElimAumento(sanidad + casur + cajaHonor + bonifSeguro) + auxMutuo + otrosDescuentos;
 
-    let devengadoRetro = asigBasicRetro + primaOPRetro + primaNERetro + SubFamRetro + primaExpRetro + distincionRetro + primaPerRetro + otrosDevengosRetro;
+    let devengadoRetro = asigBasicRetro + primaOPRetro + primaNERetro + SubFamRetro + primaExpRetro + distincionRetro + primaPerRetro + subAlimentacionRetro + bonifSeguroRetro + otrosDevengosRetro;
     let afilCasur = ((devengadoRetro) / mes * 10) / 30;
     let descuentosRetro = sanidadRetro + casurRetro + cajaHonorRetro + bonifSeguroRetro + otrosDescuentosRetro + afilCasur;
     let totalRetro = devengadoRetro - descuentosRetro;
@@ -569,7 +570,7 @@ function CalculoPer(asigBasic) {
         primaPer = asigBasic * 25 / 100;
     }
     else if ($("#selecGrado").val() == 42.6660) {
-        primaExp = asigBasic * 30 / 100;
+        primaPer = asigBasic * 30 / 100;
     }
     else if ($("#selecGrado").val() == 40.5007) {
         primaPer = asigBasic * 35 / 100;
@@ -686,9 +687,11 @@ function SubirPagina() {
 
 $(document).ready(function () {
     setInterval(function () {
-        $("#efectoBlink").animate({ 
-            opacity: 0 }, 500, function () {
-            $("#efectoBlink").animate({ opacity: 1}, 500)}
+        $("#efectoBlink").animate({
+            opacity: 0
+        }, 500, function () {
+            $("#efectoBlink").animate({ opacity: 1 }, 500)
+        }
         );
     }, 1000)
 })
