@@ -25,6 +25,7 @@ let primaNE = 0;
 let SubFam = 0;
 let titleSubFam = "";
 let titlePrimaNE = "";
+let titlePrimaExp = "";
 let distincion = 0;
 let aumento = 0;
 let mes = 4;
@@ -77,10 +78,13 @@ $("#btnCalcular").click(() => {
         primaOP = asigBasic * $("#selecOrdPub_OF").val() / 100;
         primaNE = asigBasic * 0.495;
         titlePrimaNE = "Prima de actividad";
+        titlePrimaExp = "Prima de antigüedad";
     } else {
         primaOP = asigBasic * $("#selecOrdPub").val() / 100;
         primaNE = asigBasic * 0.20;
         titlePrimaNE = "Prima nivel ejecutivo";
+        titlePrimaExp = "Prima de retorno a la experiencia";
+
     }
 
     primaExp = CalculoExp(asigBasic);
@@ -205,7 +209,7 @@ $("#btnCalcular").click(() => {
     if (primaExp > 0) {
 
         $("#tablaDevengos tbody").append(
-            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp)}</td></tr>`
+            `<tr><td>${titlePrimaExp}</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp)}</td></tr>`
         );
 
         $("#tablaDevengosComp tbody").append(
@@ -218,7 +222,7 @@ $("#btnCalcular").click(() => {
         );
 
         $("#tablaDevengosRetro tbody").append(
-            `<tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExpRetro)}</td></tr>`
+            `<tr><td>${titlePrimaExp}</td><td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExpRetro)}</td></tr>`
         );
     }
 
