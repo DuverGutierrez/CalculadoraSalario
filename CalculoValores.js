@@ -214,7 +214,7 @@ $("#btnCalcular").click(() => {
 
         $("#tablaDevengosComp tbody").append(
             `<tr>
-                <td>Prima retorno a la experiencia</td>
+                <td>${titlePrimaExp}</td>
                 <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(ElimAumento(primaExp))}</td>
                 <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp)}</td>
                 <td style="text-align: right; white-space: nowrap;" id="primaExp">${ConvertirEnString(primaExp - ElimAumento(primaExp))}</td>
