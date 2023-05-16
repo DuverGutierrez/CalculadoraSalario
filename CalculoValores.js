@@ -28,10 +28,11 @@ let titlePrimaNE = "";
 let titlePrimaExp = "";
 let distincion = 0;
 let aumento = 0;
-let mes = 4;
+let mes = 5;
 let nivel = false;
 let nivelOf = ["ST", "TE", "CT", "MY", "TC", "CR"];
 let gradNiv = "";
+let retroAsis = 0;
 
 $("#btnCalcular").click(() => {
 
@@ -112,10 +113,12 @@ $("#btnCalcular").click(() => {
     }
     else if ($("#selecAsisFam").val() != 0) {
         SubFam = asigBasic * $("#selecAsisFam").val() / 100;
-        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * mes) / 2;
+        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * 4) / 2;
+        retroAsis = SubFamRetro / 2;
 
         titleSubFam = "Bonificación Asistencia familiar";
         titleSubFamRetro = "Bonificación Asistencia familiar";
+        $("#mostrarInfoPar").css("display", "block");
     }
     else if ($("#selecSubFam").val() != 0) {
 
@@ -124,6 +127,8 @@ $("#btnCalcular").click(() => {
 
         titleSubFam = "Subsidio familiar NE";
         titleSubFamRetro = "Subsidio familiar NE";
+        $("#mostrarInfoPar").css("display", "none");
+
 
     }
     else if ($("#selecSubFam_OF").val() != 0) {
@@ -133,6 +138,8 @@ $("#btnCalcular").click(() => {
 
         titleSubFam = "Subsidio familiar";
         titleSubFamRetro = "Subsidio familiar";
+        $("#mostrarInfoPar").css("display", "none");
+
     }
 
     $("#tablaDevengos tbody").empty();
@@ -401,6 +408,9 @@ function CalcularTotal() {
         <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(descuentosRetro)}</td></tr>
         <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(totalRetro)}</td></tr>`
     );
+
+    
+    $("#retroAsis").html(ConvertirEnString(retroAsis));
 
     $("#afilCasur").remove();
 
@@ -701,10 +711,10 @@ function SubirPagina() {
 
 $(document).ready(function () {
     setInterval(function () {
-        $("#efectoBlink").animate({
+        $(".efectoBlink").animate({
             opacity: 0
         }, 200, function () {
-            $("#efectoBlink").animate({ opacity: 1 }, 200)
+            $(".efectoBlink").animate({ opacity: 1 }, 200)
         }
         );
     }, 600)

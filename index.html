@@ -64,27 +64,6 @@
             margin: 0 !important;
             font-size: 1.4rem !important;
         }
-
-        .blink {
-            animation: blink-animation 1s steps(5, start) infinite;
-            -webkit-animation: blink-animation 1s steps(5, start) infinite;
-        }
-
-        @keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
-        }
-
-        @-webkit-keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
-        }
-
-        .parpadeo {
-            display: none;
-        }
     </style>
 </head>
 
@@ -146,12 +125,15 @@
                                     <h2 class="card-title">Bienvenido</h2>
                                 </div>
                                 <div class="card-body">
-                                    <h4 id="efectoBlink" style="color: #05bf2d; text-align: center;">((( Atención )))</h4>
+                                    <h4 class="efectoBlink" style="color: #05bf2d; text-align: center;">((( Atención )))
+                                    </h4>
                                     <p style="text-align: justify;"><b>Información importante: </b>Desde esta
                                         herramienta usted podrá calcular el
                                         salario 2023 según el aumento
-                                        que sea establecido por decreto por el gobierno nacional, así como visualizar el posible
-                                        retroactivo a recibir y agregar otros descuentos o devengos adicionales que usted perciba.</p>
+                                        que sea establecido por decreto por el gobierno nacional, así como visualizar el
+                                        posible
+                                        retroactivo a recibir y agregar otros descuentos o devengos adicionales que
+                                        usted perciba.</p>
                                     <p style="text-align: justify; color: red;">Tenga en cuenta que este sistema es un
                                         proyecto libre y no hace parte de ninguna entidad, por lo que la
                                         información aquí mostrada debe ser tomada solo de referencia y ha sido extraída
@@ -553,7 +535,7 @@
                         <div class="col-md-8 col-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h2 class="card-title">Posible Retroactivo (4 meses)</h2>
+                                    <h2 class="card-title">Posible Retroactivo (5 meses)</h2>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
@@ -605,6 +587,14 @@
                                             <tbody>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="card-body" id="mostrarInfoPar" style="display: none;">
+                                        <h4 class="efectoBlink"
+                                            style="color: red; text-align: center; font-weight: 600;">((( Importante )))
+                                        </h4>
+                                        <p style="text-align: justify; color: red;">Tenga en cuenta que si los meses de
+                                            pago de su bonificación de asistencia familiar fueron impares (enero y marzo) es posible que a su retroactivo se le adicionen <b
+                                                id="retroAsis"></b>, correspondientes al aumento de esta bonificación del mes de mayo.</p>
                                     </div>
 
                                     <div class="card-footer">
