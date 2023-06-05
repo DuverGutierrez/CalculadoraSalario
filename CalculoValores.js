@@ -416,6 +416,10 @@ function CalcularTotal() {
     $("#tablaTotal tbody").empty();
     $("#tablaTotalComp tbody").empty();
     $("#tablaTotalRetro tbody").empty();
+    $("#tablaTotalPrimaSer tbody").empty();
+    $("#tablaTotalPrimaNav tbody").empty();
+
+    
 
     devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + subAlimentacion + bonifSeguro + otrosDevengos;
     descuentos = sanidad + casur + cajaHonor + auxMutuo + bonifSeguro + otrosDescuentos;
