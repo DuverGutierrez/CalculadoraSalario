@@ -33,6 +33,9 @@ let nivel = false;
 let nivelOf = ["ST", "TE", "CT", "MY", "TC", "CR"];
 let gradNiv = "";
 let retroAsis = 0;
+let primaServ = 0;
+let primaVac = 0;
+let primaNav = 0;
 
 $("#btnCalcular").click(() => {
 
@@ -142,6 +145,9 @@ $("#btnCalcular").click(() => {
 
     }
 
+    //--------------------------------------------------------------------------
+    // Tablas devengos
+
     $("#tablaDevengos tbody").empty();
     $("#tablaDescuentos tbody").empty();
 
@@ -150,6 +156,15 @@ $("#btnCalcular").click(() => {
 
     $("#tablaDevengosRetro tbody").empty();
     $("#tablaDescuentosRetro tbody").empty();
+
+    $("#tablaDevengosPrimaVac tbody").empty();
+    $("#tablaDescuentosPrimaVac tbody").empty();
+
+    $("#tablaDevengosPrimaSer tbody").empty();
+    $("#tablaDescuentosPrimaSer tbody").empty();
+
+    $("#tablaDevengosPrimaNav tbody").empty();
+    $("#tablaDescuentosPrimaNav tbody").empty();
 
     $("#tablaDevengos tbody").append(
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
@@ -192,6 +207,33 @@ $("#btnCalcular").click(() => {
          <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
          <tr><td>${titlePrimaNE}</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
     );
+
+    $("#tablaDevengosPrimaSer tbody").append(
+        `<tr><td>Asignación básica (50%)</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic / 2)}</td></tr>
+         <tr><td>Prima retorno a la experiencia (50%)</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(primaExp /2)}</td></tr>
+         <tr><td>Subsidio de alimentación (50%) </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(subAlimentacion /2)}</td></tr>`
+    );
+
+    primaServ = (asigBasic + primaExp + subAlimentacion) / 2;
+
+    $("#tablaDevengosPrimaVac tbody").append(
+        `<tr><td>Asignación básica (50%)</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic / 2)}</td></tr>
+         <tr><td>Prima retorno a la experiencia (50%)</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(primaExp / 2)}</td></tr>
+         <tr><td>Subsidio de alimentación (50%) </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(subAlimentacion / 2)}</td></tr>
+         <tr><td>Doceava parte prima de servicio</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaServ / 12)}</td></tr>`
+    );
+
+    primaVac = (asigBasic + primaExp + subAlimentacion + (primaServ / 12)) / 2;
+
+    $("#tablaDevengosPrimaNav tbody").append(
+        `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
+         <tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(primaExp)}</td></tr>
+         <tr><td>Subsidio de alimentación</td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(subAlimentacion)}</td></tr>
+         <tr><td>Doceava parte prima de servicio</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaServ / 12)}</td></tr>
+         <tr><td>Doceava parte prima de vacaciones</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaVac / 12)}</td></tr>`
+    );
+
+    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12)) / 2;
 
     if (primaOP > 0) {
 
@@ -296,6 +338,9 @@ $("#btnCalcular").click(() => {
         );
     }
 
+    //--------------------------------------------------------------------------
+    // Tablas descuentos
+
     $("#tablaDescuentos tbody").append(
         `<tr><td>Auxilio mutuo (valor promedio)</td><td style="text-align: right; white-space: nowrap;" id="auxDibie">${ConvertirEnString(auxMutuo)}</td></tr>
          <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="seguro">${ConvertirEnString(bonifSeguro)}</td></tr>
@@ -334,6 +379,14 @@ $("#btnCalcular").click(() => {
         `<tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="seguro">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
          <tr><td>Sanidad</td><td style="text-align: right; white-space: nowrap;" id="sanidad">${ConvertirEnString(sanidadRetro)}</td></tr>
          <tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(casurRetro)}</td></tr>`
+    );
+
+    $("#tablaDescuentosPrimaSer tbody").append(
+        `<tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(primaServ * 0.41666 / 100)}</td></tr>`
+    );
+
+    $("#tablaDescuentosPrimaNav tbody").append(
+        `<tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(primaNav * 0.41666 / 100)}</td></tr>`
     );
 
     if (cajaHonor > 0) {
@@ -376,6 +429,10 @@ function CalcularTotal() {
     let descuentosRetro = sanidadRetro + casurRetro + cajaHonorRetro + bonifSeguroRetro + otrosDescuentosRetro + afilCasur;
     let totalRetro = devengadoRetro - descuentosRetro;
 
+    primaServ = (asigBasic + primaExp + subAlimentacion) / 2;
+    primaVac = (asigBasic + primaExp + subAlimentacion + (primaServ / 12)) / 2;
+    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12)) / 2;
+
     $("#tablaTotal tbody").append(
         `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;" id="totalDeveng">${ConvertirEnString(devengado)}</td></tr>
         <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;" id="totalDesc">${ConvertirEnString(descuentos)}</td></tr>
@@ -409,6 +466,21 @@ function CalcularTotal() {
         <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(totalRetro)}</td></tr>`
     );
 
+    $("#tablaTotalPrimaSer tbody").append(
+        `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(primaServ)}</td></tr>
+        <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(primaServ * 0.41666 / 100)}</td></tr>
+        <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(primaServ - (primaServ * 0.41666 / 100))}</td></tr>`
+    );
+
+    $("#tablaDevengosPrimaVac tbody").append(
+        `<tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString   (primaVac)}</td></tr>`
+    );
+
+    $("#tablaTotalPrimaNav tbody").append(
+        `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(primaNav)}</td></tr>
+        <tr><td>Total descuentos</td><td style="text-align: right; white-space: nowrap;">${ConvertirEnString(primaNav * 0.41666 / 100)}</td></tr>
+        <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(primaNav - (primaNav * 0.41666 / 100))}</td></tr>`
+    );
     
     $("#retroAsis").html(ConvertirEnString(retroAsis));
 
@@ -635,6 +707,9 @@ $("#selecGrado").change(() => {
         $("#mostrarSelecOrdPub_OF").css("display", "none");
         $("#mostrarSelectExp_OF").css("display", "none");
         $("#mostrarSelecSubFam_OF").css("display", "none");
+
+        $("#mostrarBtnPrimas").css("display", "block");
+        
     }
     else if (nivelOf.find((item) => item == gradNiv)) {
         $("#mostrarSelecDistincion").css("display", "none");
@@ -648,6 +723,9 @@ $("#selecGrado").change(() => {
         $("#mostrarSelecOrdPub_OF").css("display", "block");
         $("#mostrarSelectExp_OF").css("display", "block");
         $("#mostrarSelecSubFam_OF").css("display", "block");
+
+        $("#mostrarBtnPrimas").css("display", "none");
+
     }
     else {
         $("#mostrarSelecDistincion").css("display", "none");
@@ -661,6 +739,8 @@ $("#selecGrado").change(() => {
         $("#mostrarSelecOrdPub_OF").css("display", "none");
         $("#mostrarSelectExp_OF").css("display", "none");
         $("#mostrarSelecSubFam_OF").css("display", "none");
+
+        $("#mostrarBtnPrimas").css("display", "block");
     }
 });
 
@@ -670,6 +750,7 @@ $("#btnRegresarDatos").click(() => {
     $("#contenedorSalario").hide(500);
     $("#contenedorSalarioComp").hide(500);
     $("#contenedorRetro").hide(500);
+    $("#contenedorPrimas").hide(500);
 
     SubirPagina();
 });
@@ -680,6 +761,7 @@ $("#btnRegresarSalario, #btnRegresarSalario1").click(() => {
     $("#contenedorSalario").show(500);
     $("#contenedorSalarioComp").hide(500);
     $("#contenedorRetro").hide(500);
+    $("#contenedorPrimas").hide(500);
 
     SubirPagina();
 });
@@ -690,6 +772,7 @@ $("#btnRegresarSalarioComp, #btnComparar").click(() => {
     $("#contenedorSalario").hide(500);
     $("#contenedorSalarioComp").show(500);
     $("#contenedorRetro").hide(500);
+    $("#contenedorPrimas").hide(500);
 
     SubirPagina();
 });
@@ -700,6 +783,18 @@ $("#btnVerRetroactivo").click(() => {
     $("#contenedorSalario").hide(500);
     $("#contenedorSalarioComp").hide(500);
     $("#contenedorRetro").show(500);
+    $("#contenedorPrimas").hide(500);
+
+    SubirPagina();
+});
+
+$("#btnVerPrimas").click(() => {
+
+    $("#contenedorDatos").hide(500);
+    $("#contenedorSalario").hide(500);
+    $("#contenedorSalarioComp").hide(500);
+    $("#contenedorRetro").hide(500);
+    $("#contenedorPrimas").show(500);
 
     SubirPagina();
 });

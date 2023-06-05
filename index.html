@@ -152,7 +152,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Posible porcentaje de aumento</label>
-                                        <input class="form-control" id="aumento" value="14.62">
+                                        <input class="form-control" id="aumento" value="14.62" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Grado</label>
@@ -422,7 +422,7 @@
                                             <div class="col-md-12 col-12" style="padding: 5px;">
                                                 <hr>
                                             </div>
-                                            <div class="col-md-6 col-12" style="padding: 5px;">
+                                            <div class="col-md- col-12" style="padding: 5px;">
                                                 <button class="btn btn-greenDark" style="width: 100%;"
                                                     id="btnComparar">Comparar 2022-2023</button>
                                             </div>
@@ -430,6 +430,11 @@
                                                 <button class="btn btn-primary" style="width: 100%;"
                                                     id="btnVerRetroactivo">Ver
                                                     Retroactivo</button>
+                                            </div>
+                                            <div class="col-md-6 col-12" style="padding: 5px; display: block;" id="mostrarBtnPrimas">
+                                                <button class="btn btn-primary" style="width: 100%;"
+                                                    id="btnVerPrimas">Ver
+                                                    Primas</button>
                                             </div>
                                         </div>
                                     </div>
@@ -595,6 +600,172 @@
                                         <p style="text-align: justify; color: red;">Tenga en cuenta que si los meses de
                                             pago de su bonificación de asistencia familiar fueron impares (enero y marzo) es posible que a su retroactivo se le adicionen <b
                                                 id="retroAsis"></b>, correspondientes al aumento de esta bonificación del mes de mayo.</p>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div>
+                                            <button class="btn btn-success" id="btnRegresarSalario1">Regresar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span style="font-size: 24px;color: #3348fd;font-weight: 500;">Alguna
+                                        sugerencia? &nbsp;&nbsp;</span>
+                                    <a class="btn btn-success" href="index2.html" id=""
+                                        style="padding: 0px 13px 0px 13px; font-size: 21px;">Contáctenos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="contenedorPrimas" style="display:none">
+                        <div class="col-md-8 col-12">
+                            <div class="card card-primary">
+                                <div class="card-header" style="background: #002f62">
+                                    <h2 class="card-title">Posible Prima Vacacional</h2>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengosPrimaVac">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <div class="card card-primary">
+                                <div class="card-header" style="background: #002f62">
+                                    <h2 class="card-title">Posible Prima de servicio (Julio)</h2>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengosPrimaSer">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDescuentosPrimaSer">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Descuentos</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaTotalPrimaSer">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Total</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <div class="card card-primary">
+                                <div class="card-header" style="background: #002f62">
+                                    <h2 class="card-title">Posible Prima de Navidad</h2>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDevengosPrimaNav">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align: center; background: #23ff4861">
+                                                        Devengado</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaDescuentosPrimaNav">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Descuentos</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped" style="border: 1px solid #b3b2b2"
+                                            id="tablaTotalPrimaNav">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2" style="text-align:center">Total</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 60%; text-align: left">Concepto</th>
+                                                    <th style="width: 40%; text-align: center">Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                     <div class="card-footer">
