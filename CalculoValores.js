@@ -67,7 +67,8 @@ $("#btnCalcular").click(() => {
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
     SubFam = 0;
-    subFamNE = SumAumento(37866);
+    subFamNE = 37866;
+    subFamNE = SumAumento(subFamNE);
     subAlimentacion = 68658;
     subAlimentacion = SumAumento(subAlimentacion);
     bonifSeguro = 17311;
