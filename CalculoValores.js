@@ -67,7 +67,7 @@ $("#btnCalcular").click(() => {
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
     SubFam = 0;
-    subFamNE = SumAumento(subFamNE);
+    subFamNE = SumAumento(37866);
     subAlimentacion = 68658;
     subAlimentacion = SumAumento(subAlimentacion);
     bonifSeguro = 17311;
@@ -435,7 +435,7 @@ function CalcularTotal() {
 
     primaServ = (asigBasic + primaExp + subAlimentacion) / 2;
     primaVac = (asigBasic + primaExp + subAlimentacion + (primaServ / 12)) / 2;
-    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12)) / 2;
+    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12));
 
     $("#tablaTotal tbody").append(
         `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;" id="totalDeveng">${ConvertirEnString(devengado)}</td></tr>
