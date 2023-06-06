@@ -410,6 +410,12 @@ $("#btnCalcular").click(() => {
         `<tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(primaNav * 0.41666 / 100)}</td></tr>`
     );
 
+    $("#tablaDescuentosPrimaVac tbody").append(
+        `<tr><td>Cotización CASUR</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString(primaVac * 0.41666 / 100)}</td></tr>
+         <tr><td>Bienestar Social</td><td style="text-align: right; white-space: nowrap;" id="casur">${ConvertirEnString((asigBasic / 30) * 3)}</td></tr>`
+
+    );
+
     if (cajaHonor > 0) {
         $("#tablaDescuentos tbody").append(
             `<tr><td>Ahorro obligatorio CajaHonor</td><td style="text-align: right; white-space: nowrap;" id="cajaHonor">${ConvertirEnString(cajaHonor)}</td></tr>`
@@ -453,7 +459,7 @@ function CalcularTotal() {
     let totalRetro = devengadoRetro - descuentosRetro;
 
     primaServ = (asigBasic + primaExp + subAlimentacion) / 2;
-    primaVac = (asigBasic + primaExp + subAlimentacion + (primaServ / 12)) / 2;
+    primaVac = ((asigBasic + primaExp + subAlimentacion) / 2) + (primaServ / 12);
     primaNav = (asigBasic + primaExp + primaNE + subAlimentacion + (primaServ / 12) + (primaVac / 12));
 
     $("#tablaTotal tbody").append(
@@ -495,8 +501,8 @@ function CalcularTotal() {
         <tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString(primaServ - (primaServ * 0.41666 / 100))}</td></tr>`
     );
 
-    $("#tablaDevengosPrimaVac tbody").append(
-        `<tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString   (primaVac)}</td></tr>`
+    $("#tablaTotalPrimaVac tbody").append(
+        `<tr><td style="font-weight: 700">Neto a pagar</td><td style="text-align: right; font-weight: 700; font-size: 18px; background: #73ff78; white-space: nowrap;">${ConvertirEnString   (primaVac - (primaVac * 0.41666 / 100) - ((asigBasic / 30) * 3))}</td></tr>`
     );
 
     $("#tablaTotalPrimaNav tbody").append(
