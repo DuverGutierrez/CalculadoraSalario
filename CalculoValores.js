@@ -26,6 +26,7 @@ let SubFam = 0;
 let titleSubFam = "";
 let titlePrimaNE = "";
 let titlePrimaExp = "";
+let titleSubAlimentacion = "";
 let distincion = 0;
 let aumento = 0;
 let mes = 5;
@@ -69,8 +70,9 @@ $("#btnCalcular").click(() => {
     SubFam = 0;
     subFamNE = 37866;
     subFamNE = SumAumento(subFamNE);
-    subAlimentacion = 68658;
-    subAlimentacion = SumAumento(subAlimentacion);
+
+    
+    
     bonifSeguro = 17311;
     bonifSeguro = SumAumento(bonifSeguro);
 
@@ -84,12 +86,22 @@ $("#btnCalcular").click(() => {
         primaNE = asigBasic * 0.495;
         titlePrimaNE = "Prima de actividad";
         titlePrimaExp = "Prima de antigüedad";
+        
     } else {
         primaOP = asigBasic * $("#selecOrdPub").val() / 100;
         primaNE = asigBasic * 0.20;
         titlePrimaNE = "Prima nivel ejecutivo";
         titlePrimaExp = "Prima de retorno a la experiencia";
+    }
 
+    if (nivel == true && primaOP > 0 ) {
+        subAlimentacion = 16691 * 30;
+        titleSubAlimentacion = "Partida alimentación";
+
+    }else {
+        subAlimentacion = 68658;
+        subAlimentacion = SumAumento(subAlimentacion);
+        titleSubAlimentacion = "Subsidio de alimentación";
     }
 
     primaExp = CalculoExp(asigBasic);
@@ -99,7 +111,13 @@ $("#btnCalcular").click(() => {
     asigBasicRetro = (asigBasic - ElimAumento(asigBasic)) * mes;
     SubFamRetro = 0;
     subFamNERetro = (SumAumento(subFamNE) - subFamNE) * mes;
-    subAlimentacionRetro = (subAlimentacion - ElimAumento(subAlimentacion)) * mes;
+
+    if (nivel == true && primaOP > 0 ) {
+        subAlimentacionRetro = 0;        
+    }else {
+        subAlimentacionRetro = (subAlimentacion - ElimAumento(subAlimentacion)) * mes;
+    }
+
     bonifSeguroRetro = (bonifSeguro - ElimAumento(bonifSeguro)) * mes;
     primaExpRetro = (primaExp - ElimAumento(primaExp)) * mes;
     distincionRetro = 0;
@@ -169,7 +187,7 @@ $("#btnCalcular").click(() => {
 
     $("#tablaDevengos tbody").append(
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
-         <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td></tr>
+         <tr><td>${titleSubAlimentacion}</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td></tr>
          <tr><td>Bonificación seguro de vida</td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguro)}</td></tr>
          <tr><td>${titlePrimaNE}</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNE)}</td></tr>`
     );
@@ -181,11 +199,12 @@ $("#btnCalcular").click(() => {
             <td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td>
             <td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic - ElimAumento(asigBasic))}</td>
         </tr>
+        
         <tr>
-            <td>Subsidio alimentación</td>
-            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(ElimAumento(subAlimentacion))}</td>
+            <td>${titleSubAlimentacion}</td>
+            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(nivel == true && primaOP > 0 ? subAlimentacion :  ElimAumento(subAlimentacion))}</td>
             <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion)}</td>
-            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacion - ElimAumento(subAlimentacion))}</td>
+            <td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(nivel == true && primaOP > 0 ? 0 :  subAlimentacion - ElimAumento(subAlimentacion))}</td>
         </tr>
         <tr>
             <td>Bonificación seguro de vida</td>
@@ -204,7 +223,7 @@ $("#btnCalcular").click(() => {
 
     $("#tablaDevengosRetro tbody").append(
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasicRetro)}</td></tr>
-         <tr><td>Subsidio alimentación</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacionRetro)}</td></tr>
+         <tr><td>${titleSubAlimentacion}</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(subAlimentacionRetro)}</td></tr>
          <tr><td>Bonificación seguro de vida </td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(bonifSeguroRetro)}</td></tr>
          <tr><td>${titlePrimaNE}</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaNERetro)}</td></tr>`
     );
@@ -229,12 +248,13 @@ $("#btnCalcular").click(() => {
     $("#tablaDevengosPrimaNav tbody").append(
         `<tr><td>Asignación básica</td><td style="text-align: right; white-space: nowrap;" id="asigBasic">${ConvertirEnString(asigBasic)}</td></tr>
          <tr><td>Prima retorno a la experiencia</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(primaExp)}</td></tr>
+         <tr><td>Prima nivel ejecutivo</td><td style="text-align: right; white-space: nowrap;" id="subAlim">${ConvertirEnString(primaNE)}</td></tr>
          <tr><td>Subsidio de alimentación</td><td style="text-align: right; white-space: nowrap;" id="bonSegVida">${ConvertirEnString(subAlimentacion)}</td></tr>
          <tr><td>Doceava parte prima de servicio</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaServ / 12)}</td></tr>
          <tr><td>Doceava parte prima de vacaciones</td><td style="text-align: right; white-space: nowrap;" id="primaNE">${ConvertirEnString(primaVac / 12)}</td></tr>`
     );
 
-    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12)) / 2;
+    primaNav = (asigBasic + primaExp + primaNE + subAlimentacion + (primaServ / 12) + (primaVac / 12));
 
     if (primaOP > 0) {
 
@@ -420,8 +440,6 @@ function CalcularTotal() {
     $("#tablaTotalPrimaSer tbody").empty();
     $("#tablaTotalPrimaNav tbody").empty();
 
-    
-
     devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + subAlimentacion + bonifSeguro + otrosDevengos;
     descuentos = sanidad + casur + cajaHonor + auxMutuo + bonifSeguro + otrosDescuentos;
     total = devengado - descuentos;
@@ -436,7 +454,7 @@ function CalcularTotal() {
 
     primaServ = (asigBasic + primaExp + subAlimentacion) / 2;
     primaVac = (asigBasic + primaExp + subAlimentacion + (primaServ / 12)) / 2;
-    primaNav = (asigBasic + primaExp + subAlimentacion + (primaServ / 12) + (primaVac / 12));
+    primaNav = (asigBasic + primaExp + primaNE + subAlimentacion + (primaServ / 12) + (primaVac / 12));
 
     $("#tablaTotal tbody").append(
         `<tr><td>Total devengado</td><td style="text-align: right; white-space: nowrap;" id="totalDeveng">${ConvertirEnString(devengado)}</td></tr>
