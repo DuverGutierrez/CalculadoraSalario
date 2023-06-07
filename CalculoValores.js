@@ -444,6 +444,7 @@ function CalcularTotal() {
     $("#tablaTotalComp tbody").empty();
     $("#tablaTotalRetro tbody").empty();
     $("#tablaTotalPrimaSer tbody").empty();
+    $("#tablaTotalPrimaVac tbody").empty();
     $("#tablaTotalPrimaNav tbody").empty();
 
     devengado = asigBasic + primaOP + primaNE + SubFam + primaExp + distincion + primaPer + subAlimentacion + bonifSeguro + otrosDevengos;
