@@ -70,15 +70,12 @@ $("#btnCalcular").click(() => {
     SubFam = 0;
     subFamNE = 37866;
     subFamNE = SumAumento(subFamNE);
-
-    
     
     bonifSeguro = 17311;
     bonifSeguro = SumAumento(bonifSeguro);
 
     distincion = 0;
     sanidad = asigBasic * 4 / 100;
-    casur = asigBasic * 6 / 100;
     cajaHonor = asigBasic * $("#selecCajaHonor").val() / 100;
 
     if (nivel) {
@@ -122,6 +119,12 @@ $("#btnCalcular").click(() => {
     primaExpRetro = (primaExp - ElimAumento(primaExp)) * mes;
     distincionRetro = 0;
     sanidadRetro = (sanidad - ElimAumento(sanidad)) * mes;
+    casur = (asigBasic + subAlimentacion + primaExp) * 5 / 100;
+
+    if (nivel == true) {
+        casur = casur + ((primaNE * 5) / 100);       
+    }
+
     casurRetro = (casur - ElimAumento(casur)) * mes;
     cajaHonorRetro = (cajaHonor - ElimAumento(cajaHonor)) * mes;
 
