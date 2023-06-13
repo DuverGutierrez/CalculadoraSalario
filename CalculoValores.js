@@ -101,6 +101,7 @@ $("#btnCalcular").click(() => {
         titleSubAlimentacion = "Subsidio de alimentación";
     }
 
+    
     primaExp = CalculoExp(asigBasic);
     primaOPRetro = (primaOP - ElimAumento(primaOP)) * mes;
     primaNERetro = (primaNE - ElimAumento(primaNE)) * mes;
