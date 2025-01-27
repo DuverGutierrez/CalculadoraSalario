@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calcular Salario 2023</title>
+    <title>Calcular Salario 2024</title>
 
     <!-- Google Font: Source Sans Pro    -->
     <link rel="stylesheet"
@@ -85,7 +85,7 @@
             <a href="#" class="brand-link">
                 <img src="LogoPesos.png" alt="imagen de rawpixel.com - Freepic.es
                 " class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Salario 2023</span>
+                <span class="brand-text font-weight-light">Salario 2024</span>
             </a>
             <div class="sidebar">
                 <nav class="mt-2">
@@ -129,16 +129,18 @@
                                     </h4>
                                     <p style="text-align: justify;"><b>Información importante: </b>Desde esta
                                         herramienta usted podrá calcular el
-                                        salario 2023 según el aumento
+                                        salario 2024 según el aumento
                                         que sea establecido por decreto por el gobierno nacional, así como visualizar el
                                         posible
                                         retroactivo a recibir y agregar otros descuentos o devengos adicionales que
                                         usted perciba.</p>
                                     <p style="text-align: justify; color: red;">Tenga en cuenta que este sistema es un
                                         proyecto libre y no hace parte de ninguna entidad, por lo que la
-                                        información aquí mostrada debe ser tomada solo como referencia y ha sido extraída
+                                        información aquí mostrada debe ser tomada solo como referencia y ha sido
+                                        extraída
                                         de: Decreto No. 1212 de 1990, Decreto 1091 de 1995,
-                                        Decreto 4433 de 2004, Decreto 466 de 2022, Decreto 905 de 2023 y Decreto 910 de 2023. Por lo
+                                        Decreto 4433 de 2004, Decreto 466 de 2023, Decreto 905 de 2024 y Decreto 910 de
+                                        2024. Por lo
                                         anterior, los valores reales
                                         pueden variar dependiendo de cada persona y de los datos ingresados.</p>
                                 </div>
@@ -152,7 +154,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Posible porcentaje de aumento</label>
-                                        <input class="form-control" id="aumento" value="14.62" disabled>
+                                        <input class="form-control" id="aumento" value="0" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Grado</label>
@@ -184,6 +186,49 @@
                                         <select class="form-control" id="selecOrdPub_OF">
                                             <option value="0">No</option>
                                             <option value="25">Si</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="display: block;" id="mostrarSelectTiempo">
+                                        <label for="">Tiempo en la institución</label>
+                                        <select class="form-control" id="selecTemp">
+                                            <option value="1">1 año</option>
+                                            <option value="2">2 años</option>
+                                            <option value="3">3 años</option>
+                                            <option value="4">4 años</option>
+                                            <option value="5">5 años</option>
+                                            <option value="6">6 años</option>
+                                            <option value="7">7 años</option>
+                                            <option value="8">8 años</option>
+                                            <option value="9">9 años</option>
+                                            <option value="10">10 años</option>
+                                            <option value="11">11 años</option>
+                                            <option value="12">12 años</option>
+                                            <option value="13">13 años</option>
+                                            <option value="14">14 años</option>
+                                            <option value="15">15 años</option>
+                                            <option value="16">16 años</option>
+                                            <option value="17">17 años</option>
+                                            <option value="18">18 años</option>
+                                            <option value="19">19 años</option>
+                                            <option value="20">20 años</option>
+                                            <option value="21">21 años</option>
+                                            <option value="22">22 años</option>
+                                            <option value="23">23 años</option>
+                                            <option value="24">24 años</option>
+                                            <option value="25">25 años</option>
+                                            <option value="25">26 años</option>
+                                            <option value="25">27 años</option>
+                                            <option value="25">28 años</option>
+                                            <option value="25">29 años</option>
+                                            <option value="25">30 años</option>
+                                            <option value="25">31 años</option>
+                                            <option value="25">32 años</option>
+                                            <option value="25">33 años</option>
+                                            <option value="25">34 años</option>
+                                            <option value="25">35 años</option>
+                                            <option value="25">36 años</option>
+                                            <option value="25">37 años</option>
+                                            <option value="25">38 años</option>
                                         </select>
                                     </div>
                                     <div class="form-group" style="display: block;" id="mostrarSelectExp">
@@ -261,7 +306,7 @@
                                             <option value="40">40 años</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" style="display: block;" id="mostrarSelecAsisFam">
+                                    <div class="form-group" style="display: none;" id="mostrarSelecAsisFam">
                                         <label for="">Bonificación asistencia familiar</label>
                                         <select class="form-control" id="selecAsisFam">
                                             <option value="0">No aplica</option>
@@ -270,7 +315,7 @@
                                             <option value="35">Cónyuge y 2 hijos</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" style="display: block;" id="mostrarSelecSubFam">
+                                    <div class="form-group" style="display: none;" id="mostrarSelecSubFam">
                                         <label for="">Subsidio familiar</label>
                                         <select class="form-control" id="selecSubFam">
                                             <option value="0">No aplica</option>
@@ -283,7 +328,7 @@
                                             <option value="7">7 beneficiarios</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" style="display: none;" id="mostrarSelecSubFam_OF">
+                                    <div class="form-group" style="display: block;" id="mostrarSelecSubFam_OF">
                                         <label for="">Subsidio familiar</label>
                                         <select class="form-control" id="selecSubFam_OF">
                                             <option value="0">No aplica</option>
@@ -350,7 +395,7 @@
                         <div class="col-md-8 col-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h2 class="card-title">Posible salario 2023</h2>
+                                    <h2 class="card-title">Posible salario 2024</h2>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
@@ -424,14 +469,15 @@
                                             </div>
                                             <div class="col-md- col-12" style="padding: 5px;">
                                                 <button class="btn btn-greenDark" style="width: 100%;"
-                                                    id="btnComparar">Comparar 2022-2023</button>
+                                                    id="btnComparar">Comparar 2023-2024</button>
                                             </div>
                                             <div class="col-md-6 col-12" style="padding: 5px;">
                                                 <button class="btn btn-primary" style="width: 100%;"
                                                     id="btnVerRetroactivo">Ver
                                                     Retroactivo</button>
                                             </div>
-                                            <div class="col-md-6 col-12" style="padding: 5px; display: block;" id="mostrarBtnPrimas">
+                                            <div class="col-md-6 col-12" style="padding: 5px; display: block;"
+                                                id="mostrarBtnPrimas">
                                                 <button class="btn btn-primary" style="width: 100%;"
                                                     id="btnVerPrimas">Ver
                                                     Primas</button>
@@ -457,7 +503,7 @@
                         <div class="col-md-10 col-12 col-sm-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h3 class="card-title">Comparación de salarios 2022 - 2023</h3>
+                                    <h3 class="card-title">Comparación de salarios 2023 - 2024</h3>
                                 </div>
                                 <div class="card">
                                     <div class="card-body" style="overflow-x: auto;">
@@ -470,8 +516,8 @@
                                                 </tr>
                                                 <tr>
                                                     <th style="width: 40%; text-align: left">Concepto</th>
-                                                    <th style="width: 20%; text-align: center">2022</th>
                                                     <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">2024</th>
                                                     <th style="width: 20%; text-align: center">Aumento</th>
                                                 </tr>
 
@@ -489,8 +535,8 @@
                                                 </tr>
                                                 <tr>
                                                     <th style="width: 40%; text-align: left">Concepto</th>
-                                                    <th style="width: 20%; text-align: center">2022</th>
                                                     <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">2024</th>
                                                     <th style="width: 20%; text-align: center">Aumento</th>
                                                 </tr>
                                             </thead>
@@ -507,8 +553,8 @@
                                                 </tr>
                                                 <tr>
                                                     <th style="width: 40%; text-align: left">Concepto</th>
-                                                    <th style="width: 20%; text-align: center">2022</th>
                                                     <th style="width: 20%; text-align: center">2023</th>
+                                                    <th style="width: 20%; text-align: center">2024</th>
                                                     <th style="width: 20%; text-align: center">Aumento</th>
                                                 </tr>
                                             </thead>
@@ -540,7 +586,7 @@
                         <div class="col-md-8 col-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h2 class="card-title">Posible Retroactivo (5 meses)</h2>
+                                    <h2 class="card-title">Posible Retroactivo (2 meses)</h2>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
@@ -593,14 +639,15 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="card-body" id="mostrarInfoPar" style="display: none;">
+                                    <!--<div class="card-body" id="mostrarInfoPar" style="display: none;">
                                         <h4 class="efectoBlink"
                                             style="color: red; text-align: center; font-weight: 600;">((( Importante )))
                                         </h4>
-                                        <p style="text-align: justify; color: red;">Tenga en cuenta que si los meses de
-                                            pago de su bonificación de asistencia familiar fueron impares (enero y marzo) es posible que a su retroactivo se le adicionen <b
-                                                id="retroAsis"></b>, correspondientes al aumento de esta bonificación del mes de mayo.</p>
-                                    </div>
+                                         <p style="text-align: justify; color: red;">Tenga en cuenta que si los meses de
+                                            pago de su bonificación de asistencia familiar fueron impares (enero), es posible que a su retroactivo se le adicionen <b
+                                                id="retroAsis"></b>, correspondientes al aumento de esta bonificación
+                                            del mes de mayo.</p>
+                                    </div>-->
 
                                     <div class="card-footer">
                                         <div>
