@@ -29,7 +29,7 @@ let titlePrimaExp = "";
 let titleSubAlimentacion = "";
 let distincion = 0;
 let aumento = 0;
-let mes = 1;
+let mes = 6;
 let nivel = false;
 let nivelOf = ["ST", "TE", "CT", "MY", "TC", "CR"];
 let gradNiv = "";
@@ -70,10 +70,10 @@ $("#btnCalcular").click(() => {
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
     SubFam = 0;
-    subFamNE = 43403;
+    subFamNE = 48126;
     subFamNE = SumAumento(subFamNE);
 
-    bonifSeguro = 19842;
+    bonifSeguro = 22001;
     bonifSeguro = SumAumento(bonifSeguro);
 
     distincion = 0;
@@ -88,7 +88,7 @@ $("#btnCalcular").click(() => {
 
     } else {
         primaOP = asigBasic * $("#selecOrdPub").val() / 100;
-        primaNE = asigBasic * 0.495;
+        primaNE = asigBasic * 0.20;
         titlePrimaNE = "Prima nivel ejecutivo";
         titlePrimaExp = "Prima de retorno a la experiencia";
     }
@@ -98,7 +98,7 @@ $("#btnCalcular").click(() => {
         titleSubAlimentacion = "Partida alimentación";
 
     } else {
-        subAlimentacion = 78696;
+        subAlimentacion = 87259;
         subAlimentacion = SumAumento(subAlimentacion);
         titleSubAlimentacion = "Subsidio de alimentación";
     }
@@ -131,7 +131,35 @@ $("#btnCalcular").click(() => {
     casurRetro = (casur - ElimAumento(casur)) * mes;
     cajaHonorRetro = (cajaHonor - ElimAumento(cajaHonor)) * mes;
 
-    if ($("#selecSubFam_OF").val() != 0) {
+    if ($("#selecAsisFam").val() != 0 && $("#selecSubFam").val() != 0) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡Opciones incompatibles!',
+            text: 'Solo puede seleccionar una opción entre "Bonificación de asistencia familiar" y "Subsidio familiar"',
+        })
+        return false;
+    }
+    else if ($("#selecAsisFam").val() != 0) {
+        SubFam = asigBasic * $("#selecAsisFam").val() / 100;
+        SubFamRetro = ((SubFam - ElimAumento(SubFam)) * 4) / 2;
+        retroAsis = SubFamRetro / 2;
+
+        titleSubFam = "Bonificación Asistencia familiar";
+        titleSubFamRetro = "Bonificación Asistencia familiar";
+        $("#mostrarInfoPar").css("display", "block");
+    }
+    else if ($("#selecSubFam").val() != 0) {
+
+        SubFam = subFamNE * $("#selecSubFam").val();
+        SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
+
+        titleSubFam = "Subsidio familiar NE";
+        titleSubFamRetro = "Subsidio familiar NE";
+        $("#mostrarInfoPar").css("display", "none");
+
+
+    }
+    else if ($("#selecSubFam_OF").val() != 0) {
 
         SubFam = asigBasic * $("#selecSubFam_OF").val() / 100;
         SubFamRetro = (SubFam - ElimAumento(SubFam)) * mes;
@@ -609,7 +637,41 @@ function SumAumento(valor) {//
 
 function CalculoExp(asigBasic) {
 
-    if (nivel) {
+    if ($("#selecGrado").val() == 52.7816) {
+        if ($("#selectExp").val() > 23) {
+            primaExp = asigBasic * 12 / 100;
+        } else {
+            primaExp = asigBasic * ($("#selectExp").val() * 0.5) / 100;
+        }
+    }
+    else if ($("#selecGrado").val() == 44.8164) {
+        if ($("#selectExp").val() > 18) {
+            primaExp = asigBasic * 9.5 / 100;
+        } else {
+            primaExp = asigBasic * ($("#selectExp").val() * 0.5) / 100;
+        }
+    }
+    else if ($("#selecGrado").val() == 42.6660) {
+        primaExp = asigBasic * 7 / 100;
+    }
+    else if ($("#selecGrado").val() == 40.5007) {
+        if ($("#selectExp").val() > 7) {
+            primaExp = asigBasic * 7 / 100;
+        } else {
+            primaExp = asigBasic * $("#selectExp").val() / 100;
+        }
+    }
+    else if ($("#selecGrado").val() == 31.8202) {
+        if ($("#selectExp").val() > 7) {
+            primaExp = asigBasic * 7 / 100;
+        } else {
+            primaExp = asigBasic * $("#selectExp").val() / 100;
+        }
+    }
+    else if ($("#selecGrado").val() == 25.3733 && $("#selectExp").val() > 4) {
+        primaExp = asigBasic * $("#selectExp").val() / 100;
+    }
+    else if (nivel) {
         if ($("#selectExp_OF").val() > 14) {
             primaExp = asigBasic * ($("#selectExp_OF").val() - 5) / 100;
         } else {
@@ -617,20 +679,7 @@ function CalculoExp(asigBasic) {
         }
     }
     else {
-        if (tiempo > 14){
-            primaExp = asigBasic * (10 + (tiempo - 15) ) / 100;
-
-        }else{
-            if ($("#selecGrado").val() == 40.5007) { // 2% en el primer año de IT y 1% adicional cada año
-                primaExp = asigBasic * ($("#selectExp").val() + 1) / 100;
-            }
-            else if ($("#selecGrado").val() == 31.8202) { // 1% por cada año de SI
-                primaExp = asigBasic * $("#selectExp").val() / 100;
-            }
-            else if ($("#selecGrado").val() == 25.3733 && $("#selectExp").val() > 4) { // 5% desde los 5 años de PT y 1% adicional por cada año
-                primaExp = asigBasic * $("#selectExp").val() / 100;
-            }
-        }
+        primaExp = 0;
     }
 
     return primaExp;
@@ -688,12 +737,12 @@ $("#selecGrado").change(() => {
 
         $("#mostrarSelecOrdPub").css("display", "block");
         $("#mostrarSelectExp").css("display", "block");
-        //$("#mostrarSelecSubFam").css("display", "block");
-        //$("#mostrarSelecAsisFam").css("display", "block");
+        $("#mostrarSelecSubFam").css("display", "block");
+        $("#mostrarSelecAsisFam").css("display", "block");
 
         $("#mostrarSelecOrdPub_OF").css("display", "none");
         $("#mostrarSelectExp_OF").css("display", "none");
-        //$("#mostrarSelecSubFam_OF").css("display", "none");
+        $("#mostrarSelecSubFam_OF").css("display", "none");
 
         $("#mostrarBtnPrimas").css("display", "block");
 
@@ -704,12 +753,12 @@ $("#selecGrado").change(() => {
 
         $("#mostrarSelecOrdPub").css("display", "none");
         $("#mostrarSelectExp").css("display", "none");
-        //$("#mostrarSelecSubFam").css("display", "none");
-        //$("#mostrarSelecAsisFam").css("display", "none");
+        $("#mostrarSelecSubFam").css("display", "none");
+        $("#mostrarSelecAsisFam").css("display", "none");
 
         $("#mostrarSelecOrdPub_OF").css("display", "block");
         $("#mostrarSelectExp_OF").css("display", "block");
-        //$("#mostrarSelecSubFam_OF").css("display", "block");
+        $("#mostrarSelecSubFam_OF").css("display", "block");
 
         $("#mostrarBtnPrimas").css("display", "none");
 
@@ -720,12 +769,12 @@ $("#selecGrado").change(() => {
 
         $("#mostrarSelecOrdPub").css("display", "block");
         $("#mostrarSelectExp").css("display", "block");
-        //$("#mostrarSelecSubFam").css("display", "block");
-        //$("#mostrarSelecAsisFam").css("display", "block");
+        $("#mostrarSelecSubFam").css("display", "block");
+        $("#mostrarSelecAsisFam").css("display", "block");
 
         $("#mostrarSelecOrdPub_OF").css("display", "none");
         $("#mostrarSelectExp_OF").css("display", "none");
-        //$("#mostrarSelecSubFam_OF").css("display", "none");
+        $("#mostrarSelecSubFam_OF").css("display", "none");
 
         $("#mostrarBtnPrimas").css("display", "block");
     }
