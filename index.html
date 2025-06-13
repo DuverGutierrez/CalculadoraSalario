@@ -159,6 +159,7 @@
                                     <div class="form-group">
                                         <label for="">Grado</label>
                                         <select class="form-control" id="selecGrado">
+                                            <option value="0" disabled selected>Seleccione</option>
                                             <option value="25.3733">PT</option>
                                             <option value="31.8202">SI</option>
                                             <option value="40.5007">IT</option>
@@ -592,7 +593,7 @@
                         <div class="col-md-8 col-12">
                             <div class="card card-primary">
                                 <div class="card-header" style="background: #002f62">
-                                    <h2 class="card-title">Posible Retroactivo (6 meses)</h2>
+                                    <h2 class="card-title">Posible Retroactivo (5 meses)</h2>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
@@ -645,15 +646,13 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="card-body" id="mostrarInfoPar" style="display: block;">
+                                    <div class="card-body" id="mostrarInfoPar" style="display: none;">
                                         <h4 class="efectoBlink" style="color: red; text-align: center; font-weight: 600;">
                                             ((( Importante )))
                                         </h4>
 
                                          <p style="text-align: justify; color: red;">
-                                            Tenga en cuenta que se cuentan 6 meses de retroactivo siempre y cuando el salario del mes de junio llegue sin aumento; en caso contrario, 
-                                            llegarían solo 5 meses de retroactivo, afectando también el valor final por concepto de bonificación de asistencia familiar, 
-                                            la cual, para algunos llegó en enero, marzo y mayo (3 meses) o febrero y abril (2 meses).
+                                            Tenga en cuenta que si recibe bonificación de asistencia familiar y la recibió en enero, marzo y mayo, recibirá adicional al retroactivo <b id="retroAsis"></b>.
                                         </p>
                                         </div>
 
@@ -999,7 +998,7 @@
     <!-- AdminLTE App -->
     <script src="resources/dist/js/adminlte.js"></script>
     <script src="resources/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-    <script src="CalculoValores.js?v=24"></script>
+    <script src="CalculoValores.js?v=25"></script>
 </body>
 
 </html>
