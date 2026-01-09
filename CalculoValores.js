@@ -1,11 +1,11 @@
-﻿var asigBasMin = 7353262;
-var gastRepreMin = 13072441;
-var salarioBaseGen = 0;
-var subAlimentacion = 87259;
+﻿var asigBasMin = 7897991;
+var gastRepreMin = 13987512;
+var salarioBaseGen = 9834975.9945;
+var subAlimentacion = 93368;
 var subAlimentacionRetro = 0;
-var bonifSeguro = 22001;
+var bonifSeguro = 23542;
 var auxMutuo = 5000;
-var subFamNE = 48126;
+var subFamNE = 51495;
 var primaExp = 0;
 var primaPer = 0;
 var primaPerRetro = 0;
@@ -64,16 +64,16 @@ $("#btnCalcular").click(() => {
         return false;
     }
 
-    salarioBaseGen = parseFloat((asigBasMin + gastRepreMin) * 0.45);
+    //salarioBaseGen = parseFloat((asigBasMin + gastRepreMin) * 0.45);
 
     salarioBaseGen += (salarioBaseGen * $("#aumento").val() / 100);
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
     SubFam = 0;
-    subFamNE = 48126;
+    subFamNE = 51495;
     subFamNE = SumAumento(subFamNE);
 
-    bonifSeguro = 22001;
+    bonifSeguro = 23542;
     bonifSeguro = SumAumento(bonifSeguro);
 
     distincion = 0;
@@ -94,11 +94,11 @@ $("#btnCalcular").click(() => {
     }
 
     if (nivel == true && primaOP > 0) {
-        subAlimentacion = 16691 * 30;
-        titleSubAlimentacion = "Partida alimentación";
+        subAlimentacion = 20000 * 30;
+        titleSubAlimentacion = "Partida alimentación (30 días)";
 
     } else {
-        subAlimentacion = 87259;
+        subAlimentacion = 93368;
         subAlimentacion = SumAumento(subAlimentacion);
         titleSubAlimentacion = "Subsidio de alimentación";
     }
