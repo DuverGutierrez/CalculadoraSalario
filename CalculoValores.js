@@ -65,7 +65,7 @@ $("#btnCalcular").click(() => {
     }
 
     //salarioBaseGen = parseFloat((asigBasMin + gastRepreMin) * 0.45);
-
+    salarioBaseGen = 9834975.9945;
     salarioBaseGen += (salarioBaseGen * $("#aumento").val() / 100);
 
     asigBasic = salarioBaseGen * parseFloat($("#selecGrado").val()) / 100;
