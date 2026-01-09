@@ -648,7 +648,7 @@ function CalculoExp(asigBasic) {
         if ($("#selectExp").val() > 18) {
             primaExp = asigBasic * 9.5 / 100;
         } else {
-            primaExp = asigBasic * ($("#selectExp").val() * 0.5) / 100;
+            primaExp = asigBasic * (7 + $("#selectExp").val() * 0.5) / 100;
         }
     }
     else if ($("#selecGrado").val() == 42.6660) {
