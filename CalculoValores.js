@@ -29,7 +29,7 @@ let titlePrimaExp = "";
 let titleSubAlimentacion = "";
 let distincion = 0;
 let aumento = 0;
-let mes = 3;
+let mes = 4;
 let nivel = false;
 let nivelOf = ["ST", "TE", "CT", "MY", "TC", "CR"];
 let gradNiv = "";
@@ -146,7 +146,7 @@ $("#btnCalcular").click(() => {
 
         titleSubFam = "Bonificación Asistencia familiar";
         titleSubFamRetro = "Bonificación Asistencia familiar";
-        $("#mostrarInfoPar").css("display", "block");
+        //$("#mostrarInfoPar").css("display", "block");
     }
     else if ($("#selecSubFam").val() != 0) {
 
@@ -155,7 +155,7 @@ $("#btnCalcular").click(() => {
 
         titleSubFam = "Subsidio familiar NE";
         titleSubFamRetro = "Subsidio familiar NE";
-        $("#mostrarInfoPar").css("display", "none");
+        //$("#mostrarInfoPar").css("display", "none");
 
 
     }
@@ -166,7 +166,7 @@ $("#btnCalcular").click(() => {
 
         titleSubFam = "Subsidio familiar";
         titleSubFamRetro = "Subsidio familiar";
-        $("#mostrarInfoPar").css("display", "none");
+        //$("#mostrarInfoPar").css("display", "none");
 
     }
 
